@@ -8,7 +8,7 @@ export const reviewData: RestaurantReviewData[] = [
     restaurantName: 'Taste of Tibet',
     restaurantMapsLocation: 'https://g.co/kgs/iQVRupd',
     imageUrl: 'https://lh3.googleusercontent.com/p/AF1QipNcJAx1-B1P8wmXqdvYfTGTbDlqF1Vmb-raHC3W=s1360-w1360-h1020-rw',
-    review: 'Best place for noodles, laphing, manchurian, thupka and other Tibetan food.',
+    review: 'Tucked away inside a shopping center on Brigade Road, this unassuming eatery serves some of the most authentic Tibetan cuisine in Bangalore—highlighted by standout dishes like laphing, thukpa, and noodles, all at impressively reasonable prices.',
   },
   {
     id: '2',
@@ -17,14 +17,14 @@ export const reviewData: RestaurantReviewData[] = [
     restaurantName: 'Wanley',
     restaurantMapsLocation: 'https://g.co/kgs/BGcwpGq',
     imageUrl: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/5d/3e/0b/entrance.jpg?w=1100&h=1100&s=1',
-    review: 'Veg crispy was good, everything else was meh'
+    review: 'The veg crispy stood out with its flavor and texture, while the rest of the dishes were fairly average. The use of thin noodles adds a distinct touch, though it may not appeal to all palates.'
   },
   {
     id: '3',
     rating: 6,
     restaurantType: [RestaurantType.PanAsian],
     restaurantName: 'Cha cha cha',
-    review: 'Chilli oil and noodles were good, rest meh',
+    review: 'The accompaniments like chilli oil and noodles were good, rest was average. The ambience is nice and since its is located in Pheonix marketcity, it is a good place to try when in the mall.',
     imageUrl: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrxZRYMBXp6erVOuIDifL3VNM4hI6X1zdNMRu2jMRQ1tB_TyazFkd7qOh9tRhFC_CTON6X_gXV5Jo9oGfOECdMoyR1ZgrVUE2zxy_8EFrWVkJxHFVZcejWmJ_HWKWZqTmkNM74ucQagNao=s680-w680-h510-rw',
     restaurantMapsLocation: 'https://g.co/kgs/fJXPPAk'
   },
@@ -33,7 +33,7 @@ export const reviewData: RestaurantReviewData[] = [
     rating: 4,
     restaurantType: [RestaurantType.PanAsian],
     restaurantName: 'Iza Pan Asian Kitchen',
-    review: 'All meh',
+    review: 'Everything was average, except the ambience which was good. The food is nothing to write home about, the quality did not match the price.',
     imageUrl: 'https://lh3.googleusercontent.com/p/AF1QipMYT6phEzoPkuyNVvfIPEc3pHpQZbLNy9_84_iI=w289-h312-n-k-no',
     restaurantMapsLocation: 'https://maps.app.goo.gl/oWR28BgBQioKFEs27'
   },
@@ -42,7 +42,7 @@ export const reviewData: RestaurantReviewData[] = [
     rating: 7,
     restaurantType: [RestaurantType.Buramese],
     restaurantName: 'Burma burma',
-    review: 'Lotus steam salad, peanut potato was good, rest was meh (samosa soup to try)',
+    review: 'It is a pure veg place and one of my first Pan Asian restaurants which I enjoyed. Their lotus steam salad, peanut potato was good, rest was okay (samosa soup to try next time). The ambience is nice and the service is good. It is a bit pricey but worth it.',
     imageUrl: 'https://lh3.googleusercontent.com/p/AF1QipOgCVc7whpj1SAsslXcLWjcvq5uOTjnik2_FBQs=s680-w680-h510-rw',
     restaurantMapsLocation: 'https://maps.app.goo.gl/VjHBr3b5tZSFB1DE9'
   },
@@ -51,7 +51,7 @@ export const reviewData: RestaurantReviewData[] = [
     rating: 2,
     restaurantType: [RestaurantType.Korean],
     restaurantName: 'Himalayan Korean',
-    review: 'Everything was bad, wanted to vomit',
+    review: 'I did not have a pleasant experience here. The food was not good, the service was fine and so was the ambience. Not being a fan of Korean food, it might be my bias speaking, but I would not visit it again.',
     imageUrl: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nphfXSTWY12F44UtZcuzjLPvKUp95yfuPN7t68fpCCm6AdsieDuQXIyFiuRhiEFCKSBKi1G_uhEfW1umSCELKpN_1LRa9vLs-f93Y3BKqr1Lo2r4h-RJ7O5MoD3KRP3Tl_Ixd9R=s680-w680-h510-rw',
     restaurantMapsLocation: 'https://maps.app.goo.gl/DLAKS8e6dgF9AZtb8'
   },
@@ -60,7 +60,7 @@ export const reviewData: RestaurantReviewData[] = [
     rating: 5,
     restaurantType: [RestaurantType.NorthIndian],
     restaurantName: 'Kailash parbat',
-    review: 'Fried rice was good, rest was forgettable',
+    review: 'The fried rice was well-executed and flavorful, standing out in an otherwise unremarkable selection of dishes. It is a bit pricey, with a bit above average quality. The ambience is nice and the service is decent.',
     imageUrl: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4npfTZeFbFzcXLRTkkCrpb_q9ZMjC8Yj3pjXHaGVchqM6q8vILPdjyTQnk1-Q7CXBPZNE9WJyVz4gedmFUYJp_HRizssYmAB1A7lrogXjuYZC6T2Rf3TyHUdxfzyimI948Fw0P8=s680-w680-h510-rw',
     restaurantMapsLocation: 'https://maps.app.goo.gl/DCgce5tpQLHUcx7r9'
   },
@@ -69,7 +69,7 @@ export const reviewData: RestaurantReviewData[] = [
     rating: 5,
     restaurantType: [RestaurantType.NorthIndian],
     restaurantName: 'North Rasoi Chef Pillai',
-    review: 'Good but pricey',
+    review: 'The food is good but pricey with a limited menu. The ambience is nice and the service is decent. It feels like a place that is trying to be fancy but does not quite hit the mark. The food is good but not worth the price.',
     imageUrl: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4npNLDq-JRWhlV3y231RNvlcea4ADlFhUfvsA4axLj9bOO7n_4tZxpkJ-flCpGRhQNcRGk9Dnb3q1b-9cN9aLYR_2ypvhPmox41eFTaxUbLPtZe1aPwYw-Tqs6bEXF79Q2BGtJ_Q=w289-h312-n-k-no',
     restaurantMapsLocation: 'https://maps.app.goo.gl/NuMt9BoyaxnCTecu5'
   },
@@ -78,7 +78,7 @@ export const reviewData: RestaurantReviewData[] = [
     rating: 6,
     restaurantType: [RestaurantType.NorthIndian],
     restaurantName: 'Kapoors cafe',
-    review: 'Pricy and overrated',
+    review: 'While the parathas and chole are commendable, the overall experience falls short of expectations—the pricing feels steep, and the poorly ventilated space becomes uncomfortably warm during summer months.',
     imageUrl: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrbyKN_yAgFTPaO_PsA9o-LUs1UzZ85zAmrnHyWDrYk3yryF3fMjvcinR2g7ObdN0wiHtbMpl7iInhH-5X3nieOD-b7QbtomjxfS1hBeR8TFGdd9Qq2T6GoQxq9AYllY52m8TL-=s680-w680-h510-rw',
     restaurantMapsLocation: 'https://maps.app.goo.gl/RkVcUdXDz8ty448a6'
   },
@@ -123,17 +123,17 @@ export const reviewData: RestaurantReviewData[] = [
     rating: 9,
     restaurantType: [RestaurantType.NorthIndian, RestaurantType.SouthIndian, RestaurantType.Chinese],
     restaurantName: 'Mayura sagar',
-    review: 'OG aaloo jeera + random gravy + south indian',
-    imageUrl: 'https://previews.123rf.com/images/anatolir/anatolir2201/anatolir220107845/180725686-restaurant-icon-simple-vector-food-cafe.jpg',
-    restaurantMapsLocation: 'https://maps.app.goo.gl/cpuvUae89R1cBkRf9'
+    review: 'It is a small place next to Rameshwaram cafe. Being next to such a famous place people would assume it would not be as busy, but try finding a place here in peak hours. It has great aaloo jeera, any random gravy and good south indian food at affordable prices.',
+    imageUrl: 'https://b.zmtcdn.com/data/pictures/5/51785/e19a86bd4f5286801115850f49d090d5.jpg',
+    restaurantMapsLocation: 'https://maps.app.goo.gl/y99m8Yi6muo6t11U9'
   },
   {
     id: '15',
     rating: 9,
-    restaurantType: [RestaurantType.NorthIndian],
+    restaurantType: [RestaurantType.Chaat],
     restaurantName: 'Mathuradas',
     review: 'Aaloo tikki chaat OG, rest is also good',
-    imageUrl: 'https://previews.123rf.com/images/anatolir/anatolir2201/anatolir220107845/180725686-restaurant-icon-simple-vector-food-cafe.jpg',
+    imageUrl: 'https://lh3.googleusercontent.com/cSbLyNEb0vzB9tXHr2KZI1nxwV9mckw1U_kF0NAJeRoRSGj5eq3Fp5bGxd0xg_WE3NUWvn2_j1jvcy-0OQOaEeKHtscjFC53Zf73MsU=w1200-rw',
     restaurantMapsLocation: 'https://maps.app.goo.gl/cpuvUae89R1cBkRf9'
   },
   {

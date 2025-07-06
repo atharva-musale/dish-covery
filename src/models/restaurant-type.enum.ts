@@ -23,5 +23,6 @@ export enum RestaurantType {
   Maharashtrian = 'Maharashtrian',
   FoodStreet = 'Khau galli',
   Tibetan = 'Tibetian',
-  Bakery = 'Bakery'
+  Bakery = 'Bakery',
+  Chaat = 'Chaat'
 }
