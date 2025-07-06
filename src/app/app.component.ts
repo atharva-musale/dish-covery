@@ -7,4 +7,6 @@ import { RestaurantsGridComponent } from './components';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {}
+export class AppComponent {
+  public headerImageUrl = 'url(https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png)';
+}

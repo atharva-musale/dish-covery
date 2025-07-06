@@ -1,3 +1,21 @@
+header {
+  padding: 6rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+}
+.logo {
+  font-family: "Lobster", sans-serif;
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+header h2 {
+  font-weight: 300;
+}
+
 .restaurant-grid {
   max-width: 96rem;
   margin: 2rem auto;
