@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+/* imported fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* reset stuff */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-100: rgba(0, 214, 170, 0.8);
+
+  --white: #ffffff;
+
+  --gray-100: #eaecef;
+  --gray-200: #3e4147;
+  --gray-300: #161819;
+
+  --orange-100: #f69b77;
+  --orange-200: #e36e40;
+  --orange-300: #cc4425;
+
+  --blue-100: #8ef2ff;
+  --blue-200: #407899;
+  --blue-300: #27536c;
+
+  --purple-100: #8b7097;
+  --purple-200: #694d75;
+  --purple-300: #462a51;
+
+  --success: #267E3E;
+}
+
+/* typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+span,
+li {
+  font-family: "Poppins", monospace;
+}

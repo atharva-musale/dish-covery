@@ -1,0 +1,16 @@
+@if (restaurant) {
+  <article class="restaurant-teaser">
+    @if (restaurant.imageUrl; as imageUrl) {
+      <!-- <div class="restaurant-image" [style.backgroundImage]=" 'url(' + imageUrl + ')' "></div> -->
+      <img class="restaurant-image" [src]="imageUrl" alt="Image of the restaurant">
+    }
+    <div class="title-and-rating">
+      <h2 class="restaurant-title">{{ restaurant.restaurantName }}</h2>
+      <app-rating-badge [rating]="restaurant.rating"></app-rating-badge>
+    </div>
+    <p class="remarks">{{ restaurant.review }}</p>
+    @if (restaurant.restaurantType.length) {
+      <p>{{ restaurant.restaurantType[0] }}</p>
+    }
+  </article>  
+}

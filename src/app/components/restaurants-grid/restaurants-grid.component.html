@@ -1,0 +1,7 @@
+@if (restaurants$ | async; as restaurants) {
+  @for (restaurant of restaurants; track restaurant.id) {
+    <app-restaurant-teaser class="restaurant-card" [restaurant]="restaurant"></app-restaurant-teaser>
+  } @empty {
+    <p>No restaurants found.</p>
+  }
+}

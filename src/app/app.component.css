@@ -1,0 +1,30 @@
+.restaurant-grid {
+  max-width: 96rem;
+  margin: 2rem auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media (1167px < width <= 1520px) {
+  .restaurant-grid {
+    max-width: 72rem;
+  }
+}
+
+@media (width <= 1167px) {
+  .restaurant-grid {
+    max-width: none;
+    width: min(45rem, 80%);
+  }
+}
+
+@media (width <= 815px) {
+  .restaurant-grid {
+    max-width: none;
+    padding: 0 2rem;
+  }
+}
+
