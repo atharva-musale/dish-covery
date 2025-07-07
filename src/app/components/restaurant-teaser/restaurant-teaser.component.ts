@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RestaurantReviewData } from '../../../models';
 import { RatingBadgeComponent } from '../rating-badge/rating-badge.component';
 
