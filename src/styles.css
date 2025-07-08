@@ -35,7 +35,15 @@
   --purple-200: #694d75;
   --purple-300: #462a51;
 
-  --success: #267E3E;
+  --danger-200: #e5521f;
+
+  --warning-100: #f1d981;
+  --warning-200: #f8d149;
+  --warning-300: #c9a212;
+
+  --success-100: #49cd6c;
+  --success-200: #267E3E;
+  --success-300: #1b5b2c;
 }
 
 :root {

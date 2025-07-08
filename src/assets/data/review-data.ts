@@ -174,7 +174,7 @@ export const reviewData: RestaurantReviewData[] = [
   },
   {
     id: '20',
-    rating: 6.5,
+    rating: 7,
     restaurantType: [RestaurantType.SouthIndian],
     restaurantName: 'CTR',
     review: 'It is a place which is always talked about when people search for best dosas in bangalore. It has limited options and is always crowded, but the benne dosa is great if you like thick crispy dosas. It is worth a visit.',

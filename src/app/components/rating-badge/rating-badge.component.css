@@ -1,5 +1,4 @@
 .rating {
-  background-color: var(--success);
   color: var(--white);
   display: flex;
   justify-content: center;
@@ -16,4 +15,34 @@ span {
   display: inline-block;
   width: 1.2rem;
   margin-left: 0.5rem;
+}
+
+/* Rating of 9 or 10 */
+.amazing {
+  background-color: var(--success-300)
+}
+
+/* Rating of 8 */
+.great {
+  background-color: var(--success-200)
+}
+
+/* Rating of 7 */
+.good {
+  background-color: var(--success-100)
+}
+
+/* Rating of 5 or 6 */
+.average {
+  background-color: var(--warning-200)
+}
+
+/* Rating of 3 or 4 */
+.below-average {
+  background-color: var(--orange-100)
+}
+
+/* Rating of 1 or 2 */
+.bad {
+  background-color: var(--danger-200);
 }

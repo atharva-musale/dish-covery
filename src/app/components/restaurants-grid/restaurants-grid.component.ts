@@ -21,7 +21,9 @@ export class RestaurantsGridComponent {
   constructor(private restaurantDataService: RestaurantDataService) {
     this.restaurants$ = this.restaurantDataService.restaurants$.pipe(
       map(restaurants => {
-        return restaurants.map(restaurant => ({ ...restaurant, imageUrl: `${window.document.URL}${restaurant.imageUrl}` }))
+        // Sort in descending order
+        const restaurantsSortedByRating = restaurants.sort((a, b) => b.rating - a.rating);
+        return restaurantsSortedByRating.map(restaurant => ({ ...restaurant, imageUrl: `${window.document.URL}${restaurant.imageUrl}` }))
       })
     );
   }
