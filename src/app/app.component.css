@@ -25,17 +25,17 @@ header h2 {
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 1rem;
 }
 
- @media (1085px < width <= 1445px) {
+ @media (1145px < width <= 1525px) {
   .restaurant-grid {
     max-width: 115rem;
   }
 }
 
-@media (627px < width <= 1085px) {
+@media (627px < width <= 1145px) {
   .restaurant-grid {
     max-width: 75rem;
     /* width: min(45rem, 80%); */

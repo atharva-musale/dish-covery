@@ -2,17 +2,19 @@
   width: min(35rem, 80%);
   border-radius: 2rem;
   overflow: hidden;
-  padding: 1rem;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(2, 6, 12, 0.08);
+  margin: 1rem;
 }
 
-@media (500px < width <= 725px) {
+@media (635px < width <= 765px) {
   .restaurant-card {
     width: unset;
-    flex-basis: 47%;
+    flex-basis: 46%;
   }
 }
 
-@media (width <= 500px) {
+@media (width <= 635px) {
   .restaurant-card {
     width: unset;
     flex-basis: 100%;
