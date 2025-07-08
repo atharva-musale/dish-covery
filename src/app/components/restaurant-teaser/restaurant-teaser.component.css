@@ -1,9 +1,15 @@
+article {
+  font-size: 1.5rem;
+}
+
+article h3 {
+  font-size: 1.8rem;
+}
+
 article .restaurant-image {
-  background: no-repeat center cover;
-  background-size: cover;
-  height: 15rem;
+  height: 24rem;
   width: 100%;
-  border-radius: 0.8rem;
+  border-radius: 1.3rem;
 }
 
 .title-and-rating {
@@ -14,12 +20,8 @@ article .restaurant-image {
   margin: 0.5rem 0;
 }
 
-article h3 {
-  font-size: 1.4rem;
-}
-
 article .remarks {
-  font-size: 1rem;
+  font-weight: 300;
   color: var(--gray-200);
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 0 0;
 }

@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { RestaurantTeaserComponent } from '../restaurant-teaser/restaurant-teaser.component';
 import { RestaurantDataService } from '../../services';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { RestaurantReviewData } from '../../../models';
 import { AsyncPipe } from '@angular/common';
 
@@ -19,6 +19,10 @@ export class RestaurantsGridComponent {
   public restaurants$: Observable<RestaurantReviewData[]>;
 
   constructor(private restaurantDataService: RestaurantDataService) {
-    this.restaurants$ = this.restaurantDataService.restaurants$;
+    this.restaurants$ = this.restaurantDataService.restaurants$.pipe(
+      map(restaurants => {
+        return restaurants.map(restaurant => ({ ...restaurant, imageUrl: `${window.document.URL}${restaurant.imageUrl}` }))
+      })
+    );
   }
 }

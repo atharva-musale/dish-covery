@@ -1,7 +1,6 @@
 @if (restaurant) {
   <article class="restaurant-teaser">
     @if (restaurant.imageUrl; as imageUrl) {
-      <!-- <div class="restaurant-image" [style.backgroundImage]=" 'url(' + imageUrl + ')' "></div> -->
       <img class="restaurant-image" [src]="imageUrl" alt="Image of the restaurant">
     }
     <div class="title-and-rating">

@@ -1,34 +1,37 @@
 header {
-  padding: 6rem 0;
+  padding: 20rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: var(--white);
+  background: no-repeat center cover;
+  background-size: cover;
 }
 .logo {
   font-family: "Lobster", sans-serif;
-  font-size: 5rem;
-  margin-bottom: 1rem;
+  font-size: 9rem;
+  margin-bottom: 1.5rem;
 }
 
 header h2 {
-  font-weight: 300;
+  font-size: 2rem;
+  font-weight: 400;
 }
 
 .restaurant-grid {
-  max-width: 96rem;
-  margin: 2rem auto;
+  max-width: 154rem;
+  margin: 3.2rem auto;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 @media (1167px < width <= 1520px) {
   .restaurant-grid {
-    max-width: 72rem;
+    max-width: 115rem;
   }
 }
 
@@ -42,7 +45,7 @@ header h2 {
 @media (width <= 815px) {
   .restaurant-grid {
     max-width: none;
-    padding: 0 2rem;
+    padding: 0 3rem;
   }
 }
 

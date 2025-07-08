@@ -1,8 +1,8 @@
 .restaurant-card {
-  width: min(21rem, 80%);
-  border-radius: 1rem;
+  width: min(34rem, 80%);
+  border-radius: 2rem;
   overflow: hidden;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 @media (500px < width <= 751px) {
