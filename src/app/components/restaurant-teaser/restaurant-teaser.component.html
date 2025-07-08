@@ -8,9 +8,7 @@
         <h3 class="restaurant-title">{{ restaurant.restaurantName }}</h3>
         <app-rating-badge [rating]="restaurant.rating"></app-rating-badge>
       </div>
-      @if (restaurant.restaurantType.length) {
-        <p>{{ restaurant.restaurantType[0] }}</p>
-      }
+      <app-restaurant-type-badge [restaurantType]="restaurant.restaurantType"></app-restaurant-type-badge>
       <p class="remarks">{{ restaurant.review }}</p>
     </div>
   </article>  

@@ -1,0 +1,7 @@
+span {
+  color: var(--text-color);
+  margin-right: 0.5rem;
+}
+span:not(:last-child)::after {
+  content: ',';
+}

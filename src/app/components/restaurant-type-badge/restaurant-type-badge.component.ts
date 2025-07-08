@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { RestaurantType } from '../../../models';
 
 @Component({
   selector: 'app-restaurant-type-badge',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './restaurant-type-badge.component.css'
 })
 export class RestaurantTypeBadgeComponent {
-
+  /**
+   * The restaurant types to display as badges.
+   */
+  @Input()
+  public restaurantType: RestaurantType[] = [];
 }
