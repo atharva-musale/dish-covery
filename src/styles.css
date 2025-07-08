@@ -19,7 +19,7 @@
   --white: #ffffff;
 
   --gray-100: #eaecef;
-  --gray-200: #696969;
+  --gray-200: #61688F;
   --gray-300: #3e4147;
   --gray-400: #161819;
 
@@ -36,6 +36,10 @@
   --purple-300: #462a51;
 
   --success: #267E3E;
+}
+
+:root {
+  --text-color: var(--gray-200);
 }
 
 /* typography */

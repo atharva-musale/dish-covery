@@ -21,28 +21,28 @@ header h2 {
 
 .restaurant-grid {
   max-width: 154rem;
-  margin: 3.2rem auto;
+  margin: 3rem auto;
 
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-@media (1167px < width <= 1520px) {
+ @media (1085px < width <= 1445px) {
   .restaurant-grid {
     max-width: 115rem;
   }
 }
 
-@media (width <= 1167px) {
+@media (627px < width <= 1085px) {
   .restaurant-grid {
-    max-width: none;
-    width: min(45rem, 80%);
+    max-width: 75rem;
+    /* width: min(45rem, 80%); */
   }
 }
 
-@media (width <= 815px) {
+@media (width <= 627px) {
   .restaurant-grid {
     max-width: none;
     padding: 0 3rem;

@@ -1,11 +1,11 @@
 .restaurant-card {
-  width: min(34rem, 80%);
+  width: min(35rem, 80%);
   border-radius: 2rem;
   overflow: hidden;
-  padding: 2rem;
+  padding: 1rem;
 }
 
-@media (500px < width <= 751px) {
+@media (500px < width <= 725px) {
   .restaurant-card {
     width: unset;
     flex-basis: 47%;
@@ -15,6 +15,7 @@
 @media (width <= 500px) {
   .restaurant-card {
     width: unset;
-    flex-basis: 90%;
+    flex-basis: 100%;
+    padding: 0;
   }
 }
