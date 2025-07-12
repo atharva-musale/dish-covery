@@ -25,7 +25,6 @@ header h2 {
 
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   gap: 1rem;
 }
 
@@ -38,7 +37,6 @@ header h2 {
 @media (627px < width <= 1145px) {
   .restaurant-grid {
     max-width: 75rem;
-    /* width: min(45rem, 80%); */
   }
 }
 
