@@ -21,14 +21,15 @@ header h2 {
 
 .restaurant-grid {
   max-width: 154rem;
-  margin: 3rem auto;
+  margin: 1rem auto;
 
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 1rem;
 }
 
- @media (1145px < width <= 1525px) {
+@media (1145px < width <= 1525px) {
   .restaurant-grid {
     max-width: 115rem;
   }

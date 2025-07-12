@@ -17,7 +17,9 @@
   --accent-100: rgba(0, 214, 170, 0.8);
 
   --white: #ffffff;
+  --black: #000000;
 
+  --gray-light: #eaecef;
   --gray-100: #9C9C9C;
   --gray-200: #61688F;
   --gray-300: #3e4147;
@@ -76,4 +78,10 @@ li {
   background-color: transparent;
   border: 1px solid var(--gray-100);
   color: var(--gray-100);
+}
+
+.btn-gray {
+  border: 1px solid var(--gray-300);
+  background-color: var(--gray-light);
+  color: var(--gray-300);
 }
