@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RestaurantsGridComponent } from './components';
+import { ToolbarComponent, RestaurantsGridComponent } from './components';
 
 @Component({
   selector: 'app-root',
-  imports: [RestaurantsGridComponent],
+  imports: [RestaurantsGridComponent, ToolbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
