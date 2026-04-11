@@ -1,0 +1,21 @@
+:host {
+  font-family: var(--font-lato);
+}
+:host > * {
+  font-family: inherit;
+}
+
+.dialog-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.buttons-place {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.buttons-place .btn {
+  font-size: 1.4rem;
+}

@@ -1,0 +1,111 @@
+.ms-wrapper {
+  position: relative;
+  width: 40rem;
+}
+
+.ms-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 3.4rem;
+  padding: 0.4rem 1rem;
+  border: none;
+  outline: 1px solid var(--gray-200);
+  border-radius: 0.3rem;
+  background: var(--white);
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: inherit;
+  text-align: left;
+}
+
+.ms-trigger:hover,
+.ms-trigger:focus-visible {
+  outline: 2px solid var(--blue-200);
+}
+
+.ms-placeholder {
+  color: var(--gray-100);
+}
+
+.ms-arrow {
+  font-size: 1.1rem;
+  color: var(--gray-200);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.ms-arrow-open {
+  transform: rotate(180deg);
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.ms-dropdown {
+  position: absolute;
+  top: calc(100% + 0.2rem);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.12);
+  max-height: 28rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ms-search {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--gray-light);
+  padding: 0.7rem 1rem;
+  font-size: 1.4rem;
+  font-family: inherit;
+  border-radius: 0;
+}
+
+.ms-options {
+  list-style: none;
+  overflow-y: auto;
+  max-height: 22rem;
+}
+
+.ms-options li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ms-options li:hover {
+  background: var(--gray-light);
+}
+
+.ms-options li input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  accent-color: var(--blue-200);
+  pointer-events: none;
+  outline: none;
+}
+
+.ms-no-results {
+  color: var(--gray-100);
+  cursor: default !important;
+}
+
+.ms-no-results:hover {
+  background: transparent !important;
+}

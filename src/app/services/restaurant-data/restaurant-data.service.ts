@@ -15,4 +15,14 @@ export class RestaurantDataService {
   constructor(private http: HttpClient) {
     this.restaurants$ = this.http.get<RestaurantReviewData[]>(this.apiUrl);
   }
+
+  /**
+   * Add a new restaurant review to the database
+   *
+   * @param restaurantData restaurant data
+   * @returns Observable of the newly added restaurant data
+   */
+  public addNewRestaurant(restaurantData: Omit<RestaurantReviewData, 'id'>): Observable<RestaurantReviewData> {
+    return this.http.post<RestaurantReviewData>(this.apiUrl, restaurantData);
+  }
 }

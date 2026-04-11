@@ -1,0 +1,71 @@
+<h2 class="dialog-title" mat-dialog-title>Add a New Restaurant</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="newRestaurantForm" id="add-restaurant-form">
+    <!-- Restaurant Name -->
+    <div class="form-item">
+      <label for="restaurantName">Name</label>
+      <input id="restaurantName" formControlName="restaurantName" placeholder="Enter restaurant name" />
+    </div>
+    @if (isFieldTouchedAndInvalid('restaurantName')) {
+      <p class="form-error">Restaurant name is required</p>
+    }
+
+    <!-- Restaurant Type -->
+    <div class="form-item">
+      <label for="restaurantType">Type</label>
+      <app-multi-select-dropdown
+        id="restaurantType"
+        [options]="restaurantTypes"
+        placeholder="Select type(s)"
+        formControlName="restaurantType"
+      ></app-multi-select-dropdown>
+    </div>
+    @if (isFieldTouchedAndInvalid('restaurantType')) {
+      <p class="form-error">Select at least one type</p>
+    }
+
+    <!-- Description (optional) -->
+    <div class="form-item">
+      <label for="description">Description <span class="optional">(optional)</span></label>
+      <textarea id="description" formControlName="description" rows="2" placeholder="What makes this place worth visiting?"></textarea>
+    </div>
+
+    <!-- Rating -->
+    <div class="form-item">
+      <label for="rating">Rating (1 - 10)</label>
+      <input id="rating" type="number" formControlName="rating" placeholder="e.g. 8" min="1" max="10" step="0.5" />
+    </div>
+    @if (isFieldTouchedAndInvalid('rating')) {
+      <p class="form-error">Rating is required</p>
+    }
+
+    <!-- Review -->
+    <div class="form-item">
+      <label for="review">Your review</label>
+      <textarea id="review" formControlName="review" rows="3" placeholder="Share your experience…"></textarea>
+    </div>
+    @if (isFieldTouchedAndInvalid('review')) {
+      <p class="form-error">Review is required</p>
+    }
+
+    <!-- Google Maps Location (optional) -->
+    <div class="form-item">
+      <label for="restaurantMapsLocation">Google Maps URL <span class="optional">(optional)</span></label>
+      <input id="restaurantMapsLocation" formControlName="restaurantMapsLocation" placeholder="https://maps.google.com/…" />
+    </div>
+
+    <!-- Image URL (optional) -->
+    <div class="form-item">
+      <label for="imageUrl">Image URL <span class="optional">(optional)</span></label>
+      <input id="imageUrl" formControlName="imageUrl" placeholder="https://…" />
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div class="buttons-place">
+    <button class="btn btn-gray-outline" type="button" (click)="onCancel()">Cancel</button>
+    <button class="btn btn-gray-outline" type="button" (click)="onSubmit()">Submit</button>
+  </div>
+</mat-dialog-actions>

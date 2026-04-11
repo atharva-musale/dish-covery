@@ -3,7 +3,9 @@
     {
       "id": "1",
       "rating": 9,
-      "restaurantType": ["Tibetian"],
+      "restaurantType": [
+        "Tibetian"
+      ],
       "restaurantName": "Taste of Tibet",
       "restaurantMapsLocation": "https://g.co/kgs/iQVRupd",
       "imageUrl": "assets/images/1.jpeg",
@@ -12,7 +14,9 @@
     {
       "id": "2",
       "rating": 6,
-      "restaurantType": ["Chinese"],
+      "restaurantType": [
+        "Chinese"
+      ],
       "restaurantName": "Wanley",
       "restaurantMapsLocation": "https://g.co/kgs/BGcwpGq",
       "imageUrl": "assets/images/2.jpeg",
@@ -21,7 +25,9 @@
     {
       "id": "3",
       "rating": 6,
-      "restaurantType": ["Pan Asian"],
+      "restaurantType": [
+        "Pan Asian"
+      ],
       "restaurantName": "Cha cha cha",
       "imageUrl": "assets/images/3.jpeg",
       "restaurantMapsLocation": "https://g.co/kgs/fJXPPAk",
@@ -30,7 +36,9 @@
     {
       "id": "4",
       "rating": 4,
-      "restaurantType": ["Pan Asian"],
+      "restaurantType": [
+        "Pan Asian"
+      ],
       "restaurantName": "Iza Pan Asian Kitchen",
       "imageUrl": "assets/images/4.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/oWR28BgBQioKFEs27",
@@ -39,7 +47,9 @@
     {
       "id": "5",
       "rating": 7,
-      "restaurantType": ["Burmese"],
+      "restaurantType": [
+        "Burmese"
+      ],
       "restaurantName": "Burma burma",
       "imageUrl": "assets/images/5.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/VjHBr3b5tZSFB1DE9",
@@ -48,7 +58,9 @@
     {
       "id": "6",
       "rating": 2,
-      "restaurantType": ["Korean"],
+      "restaurantType": [
+        "Korean"
+      ],
       "restaurantName": "Himalayan Korean",
       "imageUrl": "assets/images/6.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/DLAKS8e6dgF9AZtb8",
@@ -57,7 +69,9 @@
     {
       "id": "7",
       "rating": 5,
-      "restaurantType": ["North Indian"],
+      "restaurantType": [
+        "North Indian"
+      ],
       "restaurantName": "Kailash parbat",
       "imageUrl": "assets/images/7.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/DCgce5tpQLHUcx7r9",
@@ -66,7 +80,9 @@
     {
       "id": "8",
       "rating": 5,
-      "restaurantType": ["North Indian"],
+      "restaurantType": [
+        "North Indian"
+      ],
       "restaurantName": "North Rasoi Chef Pillai",
       "imageUrl": "assets/images/8.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/NuMt9BoyaxnCTecu5",
@@ -75,7 +91,9 @@
     {
       "id": "9",
       "rating": 6,
-      "restaurantType": ["North Indian"],
+      "restaurantType": [
+        "North Indian"
+      ],
       "restaurantName": "Kapoors cafe",
       "imageUrl": "assets/images/9.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/RkVcUdXDz8ty448a6",
@@ -84,7 +102,9 @@
     {
       "id": "10",
       "rating": 6,
-      "restaurantType": ["North Indian"],
+      "restaurantType": [
+        "North Indian"
+      ],
       "restaurantName": "Kapoors chaat",
       "imageUrl": "assets/images/10.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/fnC6r3PUv8aMKPJH6",
@@ -93,7 +113,9 @@
     {
       "id": "11",
       "rating": 8,
-      "restaurantType": ["North Indian"],
+      "restaurantType": [
+        "North Indian"
+      ],
       "restaurantName": "Punjabi Rasoi",
       "imageUrl": "assets/images/11.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/sHypFwULzywcgqJx6",
@@ -102,7 +124,9 @@
     {
       "id": "12",
       "rating": 7,
-      "restaurantType": ["North Indian"],
+      "restaurantType": [
+        "North Indian"
+      ],
       "restaurantName": "Puchkas",
       "imageUrl": "assets/images/12.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/P4nDTBUvrpNRJ86i6",
@@ -111,7 +135,9 @@
     {
       "id": "13",
       "rating": 6,
-      "restaurantType": ["North Indian"],
+      "restaurantType": [
+        "North Indian"
+      ],
       "restaurantName": "Kalinga spices",
       "imageUrl": "assets/images/13.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/ynGk581B8C4NS5M78",
@@ -120,7 +146,11 @@
     {
       "id": "14",
       "rating": 9,
-      "restaurantType": ["North Indian", "South Indian", "Chinese"],
+      "restaurantType": [
+        "North Indian",
+        "South Indian",
+        "Chinese"
+      ],
       "restaurantName": "Mayura sagar",
       "imageUrl": "assets/images/14.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/y99m8Yi6muo6t11U9",
@@ -129,7 +159,9 @@
     {
       "id": "15",
       "rating": 9,
-      "restaurantType": ["Chaat"],
+      "restaurantType": [
+        "Chaat"
+      ],
       "restaurantName": "Mathuradas",
       "imageUrl": "assets/images/15.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -138,7 +170,9 @@
     {
       "id": "16",
       "rating": 8,
-      "restaurantType": ["North Indian"],
+      "restaurantType": [
+        "North Indian"
+      ],
       "restaurantName": "Khannas whitefield",
       "imageUrl": "assets/images/16.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -147,7 +181,9 @@
     {
       "id": "17",
       "rating": 9,
-      "restaurantType": ["South Indian"],
+      "restaurantType": [
+        "South Indian"
+      ],
       "restaurantName": "Filter coffee",
       "imageUrl": "assets/images/17.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -156,7 +192,9 @@
     {
       "id": "18",
       "rating": 6,
-      "restaurantType": ["South Indian"],
+      "restaurantType": [
+        "South Indian"
+      ],
       "restaurantName": "Mysore cafe",
       "imageUrl": "assets/images/18.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -165,7 +203,9 @@
     {
       "id": "19",
       "rating": 7,
-      "restaurantType": ["South Indian"],
+      "restaurantType": [
+        "South Indian"
+      ],
       "restaurantName": "Namma madhurai",
       "imageUrl": "assets/images/19.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -174,7 +214,9 @@
     {
       "id": "20",
       "rating": 7,
-      "restaurantType": ["South Indian"],
+      "restaurantType": [
+        "South Indian"
+      ],
       "restaurantName": "CTR",
       "imageUrl": "assets/images/20.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -183,7 +225,9 @@
     {
       "id": "21",
       "rating": 5,
-      "restaurantType": ["South Indian"],
+      "restaurantType": [
+        "South Indian"
+      ],
       "restaurantName": "Antera",
       "imageUrl": "assets/images/21.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -192,7 +236,9 @@
     {
       "id": "22",
       "rating": 6,
-      "restaurantType": ["Biryani"],
+      "restaurantType": [
+        "Biryani"
+      ],
       "restaurantName": "Aromas",
       "imageUrl": "assets/images/22.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -201,7 +247,9 @@
     {
       "id": "23",
       "rating": 8,
-      "restaurantType": ["Biryani"],
+      "restaurantType": [
+        "Biryani"
+      ],
       "restaurantName": "Meghna Foods",
       "imageUrl": "assets/images/23.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -210,7 +258,11 @@
     {
       "id": "24",
       "rating": 7,
-      "restaurantType": ["North Indian", "South Indian", "Chinese"],
+      "restaurantType": [
+        "North Indian",
+        "South Indian",
+        "Chinese"
+      ],
       "restaurantName": "Imperio",
       "imageUrl": "assets/images/24.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -219,7 +271,11 @@
     {
       "id": "25",
       "rating": 7,
-      "restaurantType": ["North Indian", "South Indian", "Chinese"],
+      "restaurantType": [
+        "North Indian",
+        "South Indian",
+        "Chinese"
+      ],
       "restaurantName": "Imperial",
       "imageUrl": "assets/images/25.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -228,7 +284,11 @@
     {
       "id": "26",
       "rating": 6,
-      "restaurantType": ["North Indian", "South Indian", "Chinese"],
+      "restaurantType": [
+        "North Indian",
+        "South Indian",
+        "Chinese"
+      ],
       "restaurantName": "Empire",
       "imageUrl": "assets/images/26.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -237,7 +297,9 @@
     {
       "id": "27",
       "rating": 3,
-      "restaurantType": ["South Indian"],
+      "restaurantType": [
+        "South Indian"
+      ],
       "restaurantName": "Sri Laxmi Vaibhav",
       "imageUrl": "assets/images/27.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -246,7 +308,9 @@
     {
       "id": "28",
       "rating": 7,
-      "restaurantType": ["Maharashtrian"],
+      "restaurantType": [
+        "Maharashtrian"
+      ],
       "restaurantName": "Puneri Katta",
       "imageUrl": "assets/images/28.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -255,7 +319,9 @@
     {
       "id": "29",
       "rating": 7,
-      "restaurantType": ["Maharashtrian"],
+      "restaurantType": [
+        "Maharashtrian"
+      ],
       "restaurantName": "Muraamba",
       "imageUrl": "assets/images/29.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -264,7 +330,9 @@
     {
       "id": "30",
       "rating": 7,
-      "restaurantType": ["Maharashtrian"],
+      "restaurantType": [
+        "Maharashtrian"
+      ],
       "restaurantName": "Kothimbir",
       "imageUrl": "assets/images/30.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -273,7 +341,9 @@
     {
       "id": "31",
       "rating": 7,
-      "restaurantType": ["Pub"],
+      "restaurantType": [
+        "Pub"
+      ],
       "restaurantName": "Longboat",
       "imageUrl": "assets/images/31.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -282,7 +352,9 @@
     {
       "id": "32",
       "rating": 7,
-      "restaurantType": ["Pub"],
+      "restaurantType": [
+        "Pub"
+      ],
       "restaurantName": "Street 1522",
       "imageUrl": "assets/images/32.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -291,7 +363,9 @@
     {
       "id": "33",
       "rating": 5,
-      "restaurantType": ["Continental"],
+      "restaurantType": [
+        "Continental"
+      ],
       "restaurantName": "Breads and banter",
       "imageUrl": "assets/images/33.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -300,7 +374,9 @@
     {
       "id": "34",
       "rating": 7,
-      "restaurantType": ["Bakery"],
+      "restaurantType": [
+        "Bakery"
+      ],
       "restaurantName": "Glenz bakehouse",
       "imageUrl": "assets/images/34.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -309,7 +385,9 @@
     {
       "id": "35",
       "rating": 3,
-      "restaurantType": ["Khau galli"],
+      "restaurantType": [
+        "Khau galli"
+      ],
       "restaurantName": "VV Puram Food street",
       "imageUrl": "assets/images/35.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -318,7 +396,11 @@
     {
       "id": "36",
       "rating": 8,
-      "restaurantType": ["North Indian", "South Indian", "Chinese"],
+      "restaurantType": [
+        "North Indian",
+        "South Indian",
+        "Chinese"
+      ],
       "restaurantName": "Sri Vishnu Park",
       "imageUrl": "assets/images/36.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/73kh81iXDKgzpMzQ8",
@@ -327,7 +409,9 @@
     {
       "id": "37",
       "rating": 3,
-      "restaurantType": ["Maharashtrian"],
+      "restaurantType": [
+        "Maharashtrian"
+      ],
       "restaurantName": "Mast Marathi",
       "imageUrl": "assets/images/37.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
@@ -336,11 +420,14 @@
     {
       "id": "38",
       "rating": 8,
-      "restaurantType": ["Maharashtrian"],
+      "restaurantType": [
+        "Maharashtrian"
+      ],
       "restaurantName": "Gavran Misal",
       "imageUrl": "assets/images/38.jpeg",
       "restaurantMapsLocation": "https://maps.app.goo.gl/cpuvUae89R1cBkRf9",
       "review": "The food reminds me of home. Although the vadapav could be better, the misal cooked on woodfire was very flavourful. It has a short menu but everything is well executed."
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

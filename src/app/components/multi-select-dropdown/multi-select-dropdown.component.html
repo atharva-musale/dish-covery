@@ -1,0 +1,50 @@
+<div class="ms-wrapper">
+  <button class="ms-trigger"
+    role="combobox"
+    aria-haspopup="listbox"
+    aria-controls="ms-listbox"
+    [attr.aria-expanded]="isOpen()"
+    (click)="toggleDropdown()"
+    (keydown)="onTriggerKeydown($event)">
+    @if (selected().length === 0) {
+      <span class="ms-placeholder">{{ placeholder() }}</span>
+    } @else {
+      <div class="chips-container">
+        @for (item of selected(); track item) {
+          <app-chip [item]="item" (removeButtonClick)="removeChip($event)"></app-chip>
+        }
+      </div>
+    }
+    <i class="fa-solid fa-chevron-down ms-arrow" [class.ms-arrow-open]="isOpen()"></i>
+  </button>
+
+  @if (isOpen()) {
+    <div class="ms-dropdown" id="ms-listbox" role="listbox">
+      <input
+        class="ms-search"
+        type="text"
+        placeholder="Search…"
+        [value]="filter()"
+        (input)="onFilterInput($event)"
+        (click)="$event.stopPropagation()"
+      />
+      <ul class="ms-options">
+        @for (option of filteredOptions(); track option) {
+          <li
+            role="option"
+            tabindex="0"
+            [attr.aria-selected]="isSelected(option)"
+            (click)="toggleOption(option); $event.stopPropagation()"
+            (keydown)="onOptionKeydown($event, option)"
+          >
+            <input type="checkbox" [checked]="isSelected(option)" tabindex="-1" />
+            <span>{{ option }}</span>
+          </li>
+        }
+        @if (filteredOptions().length === 0) {
+          <li class="ms-no-results">No matching options</li>
+        }
+      </ul>
+    </div>
+  }
+</div>
