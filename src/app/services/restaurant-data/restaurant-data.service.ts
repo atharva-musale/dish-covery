@@ -1,20 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { RestaurantReviewData } from '../../../models';
-import { reviewData } from '../../../assets';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantDataService {
-  /**
-   * List of restaurant reviews
-   */
-  private restaurants: RestaurantReviewData[] = reviewData;
+  private readonly apiUrl = 'http://localhost:3000/restaurants';
 
-  /**
-   * Source of truth for restaurant reviews
-   */
-  private restaurantsSubject$ = new BehaviorSubject<RestaurantReviewData[]>(this.restaurants);
-  public restaurants$ = this.restaurantsSubject$.asObservable();
+  /** Observable stream of restaurant reviews */
+  public restaurants$: Observable<RestaurantReviewData[]>;
+
+  constructor(private http: HttpClient) {
+    this.restaurants$ = this.http.get<RestaurantReviewData[]>(this.apiUrl);
+  }
 }

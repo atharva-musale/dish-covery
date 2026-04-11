@@ -23,10 +23,10 @@ header h2 {
   max-width: 154rem;
   margin: 1rem auto;
 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(35rem, 100%), 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
 }
 
 @media (1145px < width <= 1525px) {
@@ -44,7 +44,7 @@ header h2 {
 @media (width <= 627px) {
   .restaurant-grid {
     max-width: none;
-    padding: 0 3rem;
+    padding: 0 1.5rem;
   }
 }
 
