@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { RestaurantReviewData } from '../../../models';
+import { RestaurantReviewData } from '../../models';
 import { RatingBadgeComponent } from '../rating-badge/rating-badge.component';
 import { RestaurantTypeBadgeComponent } from '../restaurant-type-badge/restaurant-type-badge.component';
 

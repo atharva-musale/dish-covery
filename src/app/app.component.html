@@ -1,6 +1,6 @@
-<header [style.backgroundImage]="headerImageUrl">
+<header #pageHeader [style.backgroundImage]="headerImageUrl">
   <h1 class="logo">DishCovery</h1>
   <h2>Find the best restaurants, cafés and bars in Bangalore</h2>
 </header>
-<app-toolbar></app-toolbar>
+<app-toolbar [class.scrolled]="isScrolled$ | async"></app-toolbar>
 <app-restaurants-grid class="restaurant-grid"></app-restaurants-grid>

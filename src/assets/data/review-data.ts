@@ -1,4 +1,4 @@
-import { RestaurantReviewData, RestaurantType } from "../../models";
+import { RestaurantReviewData, RestaurantType } from "../../app/models";
 
 export const reviewData: RestaurantReviewData[] = [
   {

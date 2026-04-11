@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RestaurantType } from '../../../models';
+import { RestaurantType } from '../../models';
 
 @Component({
   selector: 'app-restaurant-type-badge',

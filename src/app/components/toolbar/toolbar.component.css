@@ -3,16 +3,37 @@
 }
 
 .toolbar-container {
-  margin: 1rem;
+  max-width: 154rem;
+  margin: 0.5rem auto;
+  padding: 0 1rem;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
+@media (627px < width <= 1145px) {
+  .toolbar-container {
+    max-width: 75rem;
+  }
+}
+
+@media (1145px < width <= 1525px) {
+  .toolbar-container {
+    max-width: 115rem;
+  }
+}
+
+@media (width <= 627px) {
+  .toolbar-container {
+    max-width: none;
+    padding: 0 1.5rem;
+  }
+}
+
 .add-restaurant-button {
   margin-left: auto;
 }
-.add-restaurant-button:hover {
+.toolbar-container .btn-gray-outline:hover {
   border: 1px solid var(--gray-100);
   background-color: var(--gray-100);
   color: var(--white);

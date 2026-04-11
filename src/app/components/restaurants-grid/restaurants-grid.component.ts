@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { RestaurantTeaserComponent } from '../restaurant-teaser/restaurant-teaser.component';
 import { RestaurantDataService } from '../../services';
 import { map, Observable } from 'rxjs';
-import { RestaurantReviewData } from '../../../models';
+import { RestaurantReviewData } from '../../models';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
