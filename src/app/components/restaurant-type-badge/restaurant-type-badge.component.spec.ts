@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RestaurantTypeBadgeComponent } from './restaurant-type-badge.component';
+import { RestaurantType } from '../../models';
 
 describe('RestaurantTypeBadgeComponent', () => {
   let component: RestaurantTypeBadgeComponent;
@@ -19,5 +20,29 @@ describe('RestaurantTypeBadgeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render nothing when restaurantType is empty', () => {
+    const spans = fixture.nativeElement.querySelectorAll('span');
+    expect(spans.length).toBe(0);
+  });
+
+  it('should render a badge for each restaurant type', () => {
+    component.restaurantType = [RestaurantType.Italian, RestaurantType.Cafe];
+    fixture.detectChanges();
+
+    const spans = fixture.nativeElement.querySelectorAll('span');
+    expect(spans.length).toBe(2);
+    expect(spans[0].textContent.trim()).toBe('Italian');
+    expect(spans[1].textContent.trim()).toBe('Cafe');
+  });
+
+  it('should render a single badge correctly', () => {
+    component.restaurantType = [RestaurantType.Japanese];
+    fixture.detectChanges();
+
+    const spans = fixture.nativeElement.querySelectorAll('span');
+    expect(spans.length).toBe(1);
+    expect(spans[0].textContent.trim()).toBe('Japanese');
   });
 });

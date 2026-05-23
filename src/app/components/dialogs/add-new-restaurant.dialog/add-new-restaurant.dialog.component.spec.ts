@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { AddNewRestaurantDialogComponent } from './add-new-restaurant.dialog.component';
 
@@ -8,7 +9,10 @@ describe('AddNewRestaurantDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddNewRestaurantDialogComponent]
+      imports: [AddNewRestaurantDialogComponent],
+      providers: [
+        { provide: MatDialogRef, useValue: { close: jasmine.createSpy('close') } }
+      ]
     })
     .compileComponents();
 

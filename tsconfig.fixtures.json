@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/fixtures",
+    "composite": true,
+    "types": [
+      "jasmine"
+    ]
+  },
+  "include": [
+    "src/**/*.fixtures.ts",
+    "src/**/*.d.ts"
+  ]
+}
