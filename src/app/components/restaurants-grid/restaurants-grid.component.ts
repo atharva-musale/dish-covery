@@ -20,11 +20,29 @@ export class RestaurantsGridComponent {
 
   constructor(private restaurantDataService: RestaurantDataService) {
     this.restaurants$ = this.restaurantDataService.restaurants$.pipe(
-      map(restaurants => {
-        // Sort in descending order
-        const restaurantsSortedByRating = restaurants.sort((a, b) => b.rating - a.rating);
-        return restaurantsSortedByRating.map(restaurant => ({ ...restaurant, imageUrl: `${window.document.URL}${restaurant.imageUrl}` }))
-      })
+      map(restaurants => (
+        restaurants
+          .sort((a, b) => b.rating - a.rating)
+          .map(restaurant => ({
+            ...restaurant,
+            imageUrl: this.getImageUrl(restaurant)
+          }))
+      ))
     );
+  }
+
+  /**
+   * Returns the image url based on following priority:
+   * 1. imageUrl from backend
+   * 2. imageAssetsPath from backend
+   * 3. fallback image from assets
+   *
+   * @param restaurant restaurant data from backend
+   * @returns image url
+   */
+  private getImageUrl(restaurant: RestaurantReviewData): string {
+    const domain = window.document.URL;
+    return restaurant.imageUrl ??
+      `${domain}${(restaurant.imageAssetsPath ?? '/assets/images/fallback-restaurant.png')}`;
   }
 }

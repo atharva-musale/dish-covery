@@ -43,6 +43,12 @@ export interface RestaurantReviewData {
   imageUrl?: string;
 
   /**
+   * Optional path to the image assets for the restaurant.
+   * This can be used to specify a local path to the image assets if they are stored within the application.
+   */
+  imageAssetsPath?: string;
+
+  /**
    * Written review of the restaurant.
    * This is a text field where users can share their experiences, opinions, and recommendations about the restaurant.
    * It can include details about the food, service, atmosphere, and overall experience.
