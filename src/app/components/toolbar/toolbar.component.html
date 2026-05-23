@@ -1,9 +1,9 @@
 <section class="toolbar-container">
-  <button class="btn btn-gray-outline filter-button">
+  <button class="btn btn-gray-outline filter-button" (click)="openFilterDialog()">
     <i class="fa-solid fa-sliders"></i>
     <span>Filters</span>
   </button>
-  <button class="btn btn-gray-outline rating-button">
+  <button class="btn btn-gray-outline rating-button" (click)="filterByRating()">
     <span>Rating: 7+</span>
   </button>
   <button class="btn btn-gray-outline add-restaurant-button" (click)="openAddRestaurantDialog()">
