@@ -29,8 +29,15 @@ export class ToolbarComponent {
     });
   }
 
+  public openFilterDialog() {
+    console.log('Filter dialog opened');
+  }
+
+  public filterByRating() {
+    console.log('Filtering by rating 7+');
+  }
+
   private async addNewRestaurant(restaurantData: Omit<RestaurantReviewData, 'id'>) {
-    const addedData = await firstValueFrom(this.restaurantDataService.addNewRestaurant(restaurantData));
-    console.log('Added restaurant:', addedData);
+    await firstValueFrom(this.restaurantDataService.addNewRestaurant(restaurantData));
   }
 }

@@ -129,4 +129,80 @@ describe('MultiSelectDropdownComponent', () => {
       expect(component.selected()).toEqual(['Japanese']);
     });
   });
+
+  describe('keyboard navigation', () => {
+    it('should open dropdown on Enter key', () => {
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+      spyOn(event, 'preventDefault');
+      component.onTriggerKeydown(event);
+      expect(component.isOpen()).toBeTrue();
+      expect(event.preventDefault).toHaveBeenCalled();
+    });
+
+    it('should open dropdown on Space key', () => {
+      const event = new KeyboardEvent('keydown', { key: ' ' });
+      spyOn(event, 'preventDefault');
+      component.onTriggerKeydown(event);
+      expect(component.isOpen()).toBeTrue();
+    });
+
+    it('should not toggle on other keys', () => {
+      const event = new KeyboardEvent('keydown', { key: 'Tab' });
+      component.onTriggerKeydown(event);
+      expect(component.isOpen()).toBeFalse();
+    });
+
+    it('should select option on Enter key', () => {
+      component.toggleDropdown();
+      const event = new KeyboardEvent('keydown', { key: 'Enter' });
+      spyOn(event, 'preventDefault');
+      component.onOptionKeydown(event, 'Italian');
+      expect(component.selected()).toContain('Italian');
+    });
+
+    it('should not select option on other keys', () => {
+      component.toggleDropdown();
+      const event = new KeyboardEvent('keydown', { key: 'Tab' });
+      component.onOptionKeydown(event, 'Italian');
+      expect(component.selected()).not.toContain('Italian');
+    });
+  });
+
+  describe('document click', () => {
+    it('should close dropdown when clicking outside', () => {
+      component.toggleDropdown();
+      expect(component.isOpen()).toBeTrue();
+
+      const outsideEvent = new MouseEvent('click');
+      Object.defineProperty(outsideEvent, 'target', { value: document.body });
+      component.onDocumentClick(outsideEvent);
+
+      expect(component.isOpen()).toBeFalse();
+    });
+
+    it('should keep dropdown open when clicking inside', () => {
+      component.toggleDropdown();
+      fixture.detectChanges();
+
+      const insideEvent = new MouseEvent('click');
+      Object.defineProperty(insideEvent, 'target', { value: fixture.nativeElement });
+      component.onDocumentClick(insideEvent);
+
+      expect(component.isOpen()).toBeTrue();
+    });
+  });
+
+  describe('ControlValueAccessor', () => {
+    it('should handle null in writeValue', () => {
+      component.writeValue(null as any);
+      expect(component.selected()).toEqual([]);
+    });
+
+    it('should register onChange callback', () => {
+      const spy = jasmine.createSpy('onChange');
+      component.registerOnChange(spy);
+      component.toggleOption('Italian');
+      expect(spy).toHaveBeenCalledWith(['Italian']);
+    });
+  });
 });

@@ -70,4 +70,35 @@ describe('RestaurantsGridComponent', () => {
     const message = getElementBySelector('p', fixture);
     expect(message!.hasTextContent('No restaurants found.')).toBeTrue();
   });
+
+  it('should use imageAssetsPath when imageUrl is not provided', () => {
+    mockRestaurantDataService.restaurants$.next([{
+      id: '3',
+      restaurantName: 'Path Place',
+      rating: 7,
+      restaurantType: [RestaurantType.Italian],
+      review: 'Nice',
+      imageAssetsPath: '/assets/images/custom.png',
+    }]);
+    fixture.detectChanges();
+
+    component.restaurants$.subscribe(restaurants => {
+      expect(restaurants[0].imageUrl).toContain('/assets/images/custom.png');
+    });
+  });
+
+  it('should use fallback image when neither imageUrl nor imageAssetsPath is provided', () => {
+    mockRestaurantDataService.restaurants$.next([{
+      id: '4',
+      restaurantName: 'Fallback Place',
+      rating: 6,
+      restaurantType: [RestaurantType.Mexican],
+      review: 'OK',
+    }]);
+    fixture.detectChanges();
+
+    component.restaurants$.subscribe(restaurants => {
+      expect(restaurants[0].imageUrl).toContain('/assets/images/fallback-restaurant.png');
+    });
+  });
 });
