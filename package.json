@@ -9,6 +9,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "audit:ci": "yarn audit --level moderate",
+    "lint:ci": "ng lint",
+    "test:ci": "ng test --no-watch --browsers=ChromeHeadless --code-coverage",
     "prepare": "husky"
   },
   "private": true,
