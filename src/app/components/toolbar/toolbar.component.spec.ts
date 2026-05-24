@@ -5,22 +5,24 @@ import { of } from 'rxjs';
 import { ToolbarComponent } from './toolbar.component';
 import { RestaurantDataService } from '../../services';
 import { getElementBySelector } from '../../testing';
+import { RestaurantDataServiceFixtures } from '../../../fixtures';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
   let fixture: ComponentFixture<ToolbarComponent>;
   let dialogSpy: jasmine.SpyObj<MatDialog>;
-  let restaurantDataServiceSpy: jasmine.SpyObj<RestaurantDataService>;
+  let mockRestaurantDataService: RestaurantDataServiceFixtures;
 
   beforeEach(async () => {
     dialogSpy = jasmine.createSpyObj('MatDialog', ['open']);
-    restaurantDataServiceSpy = jasmine.createSpyObj('RestaurantDataService', ['addNewRestaurant']);
+    mockRestaurantDataService = new RestaurantDataServiceFixtures();
+    mockRestaurantDataService.updateFilterState.and.returnValue(undefined);
 
     await TestBed.configureTestingModule({
       imports: [ToolbarComponent],
       providers: [
         { provide: MatDialog, useValue: dialogSpy },
-        { provide: RestaurantDataService, useValue: restaurantDataServiceSpy }
+        { provide: RestaurantDataService, useValue: mockRestaurantDataService }
       ]
     })
     .compileComponents();
@@ -56,11 +58,11 @@ describe('ToolbarComponent', () => {
   it('should call addNewRestaurant service when dialog returns data', () => {
     const mockResult = { restaurantName: 'New Place', rating: 8 };
     dialogSpy.open.and.returnValue({ afterClosed: () => of(mockResult) } as any);
-    restaurantDataServiceSpy.addNewRestaurant.and.returnValue(of({ id: '1', ...mockResult } as any));
+    mockRestaurantDataService.addNewRestaurant.and.returnValue(of({ id: '1', ...mockResult } as any));
 
     component.openAddRestaurantDialog();
 
-    expect(restaurantDataServiceSpy.addNewRestaurant).toHaveBeenCalledWith(mockResult as any);
+    expect(mockRestaurantDataService.addNewRestaurant).toHaveBeenCalledWith(mockResult as any);
   });
 
   it('should not call addNewRestaurant when dialog is cancelled', () => {
@@ -68,6 +70,24 @@ describe('ToolbarComponent', () => {
 
     component.openAddRestaurantDialog();
 
-    expect(restaurantDataServiceSpy.addNewRestaurant).not.toHaveBeenCalled();
+    expect(mockRestaurantDataService.addNewRestaurant).not.toHaveBeenCalled();
+  });
+
+  describe('toggleFilterBySevenRating', () => {
+    it('should activate the 7+ rating filter when toggled on', () => {
+      component.toggleFilterBySevenRating();
+      fixture.detectChanges();
+      const ratingBtn = getElementBySelector('.rating-button', fixture);
+
+      expect(ratingBtn?.hasClass('active')).toBeTrue();
+      expect(component.isRatingBySevenFilterActive()).toBeTrue();
+    });
+
+    it('should deactivate the 7+ rating filter when toggled off', () => {
+      component.toggleFilterBySevenRating(); // Toggle on
+      component.toggleFilterBySevenRating(); // Toggle off
+
+      expect(component.isRatingBySevenFilterActive()).toBeFalse();
+    });
   });
 });
