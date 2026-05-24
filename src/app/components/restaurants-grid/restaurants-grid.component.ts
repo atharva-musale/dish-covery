@@ -19,11 +19,9 @@ export class RestaurantsGridComponent {
   public restaurants$: Observable<RestaurantReviewData[]>;
 
   constructor(private restaurantDataService: RestaurantDataService) {
-    this.restaurants$ = this.restaurantDataService.restaurants$.pipe(
+    this.restaurants$ = this.restaurantDataService.filteredRestaurants$.pipe(
       map(restaurants => (
-        restaurants
-          .sort((a, b) => b.rating - a.rating)
-          .map(restaurant => ({
+        restaurants.map(restaurant => ({
             ...restaurant,
             imageUrl: this.getImageUrl(restaurant)
           }))

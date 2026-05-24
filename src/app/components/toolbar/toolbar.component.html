@@ -3,7 +3,10 @@
     <i class="fa-solid fa-sliders"></i>
     <span>Filters</span>
   </button>
-  <button class="btn btn-gray-outline rating-button" (click)="filterByRating()">
+  <button class="btn btn-gray-outline rating-button"
+    [class.active]="isRatingBySevenFilterActive()"
+    (click)="toggleFilterBySevenRating()"
+  >
     <span>Rating: 7+</span>
   </button>
   <button class="btn btn-gray-outline add-restaurant-button" (click)="openAddRestaurantDialog()">
