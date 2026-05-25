@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 
-import { AddNewRestaurantDialogComponent } from './add-new-restaurant.dialog.component';
+import { AddNewRestaurantDialogComponent } from './add-new-restaurant-dialog.component';
 import { RestaurantType } from '../../../models';
 import { getElementBySelector } from '../../../testing';
 

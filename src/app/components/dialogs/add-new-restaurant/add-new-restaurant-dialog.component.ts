@@ -11,8 +11,8 @@ import { MultiSelectDropdownComponent } from '../../utils';
     MatDialogModule,
     MultiSelectDropdownComponent,
   ],
-  templateUrl: './add-new-restaurant.dialog.component.html',
-  styleUrl: './add-new-restaurant.dialog.component.css',
+  templateUrl: './add-new-restaurant-dialog.component.html',
+  styleUrl: './add-new-restaurant-dialog.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddNewRestaurantDialogComponent {
