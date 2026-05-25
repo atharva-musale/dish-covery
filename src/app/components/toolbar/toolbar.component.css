@@ -9,6 +9,7 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 @media (627px < width <= 1145px) {
@@ -40,8 +41,21 @@
   transition: all 0.3s ease-in-out;
 }
 
-.active {
-  border: 1px solid var(--gray-100);
-  background-color: var(--gray-100);
-  color: var(--white);
+.result-count {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1.3rem;
+  color: var(--gray-100);
+}
+
+.reset-filters-button {
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.reset-filters-button:hover {
+  text-decoration: underline;
+  opacity: 1;
 }

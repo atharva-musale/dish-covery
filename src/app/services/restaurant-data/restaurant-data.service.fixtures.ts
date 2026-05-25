@@ -3,10 +3,12 @@ import { FilterState, RestaurantReviewData } from "../../models";
 import { RestaurantDataService } from "./restaurant-data.service";
 
 export class RestaurantDataServiceFixtures implements Readonly<RestaurantDataService> {
+  public restaurants$: BehaviorSubject<RestaurantReviewData[]>;
   public filteredRestaurants$: BehaviorSubject<RestaurantReviewData[]>;
   public filterState$: BehaviorSubject<FilterState>;
 
   constructor() {
+    this.restaurants$ = new BehaviorSubject<RestaurantReviewData[]>([]);
     this.filteredRestaurants$ = new BehaviorSubject<RestaurantReviewData[]>([]);
     this.filterState$ = new BehaviorSubject<FilterState>({ restaurantType: null, rating: null });
   }

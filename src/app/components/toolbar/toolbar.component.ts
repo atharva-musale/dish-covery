@@ -1,14 +1,21 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewRestaurantDialogComponent } from '../dialogs/add-new-restaurant/add-new-restaurant-dialog.component';
-import { distinctUntilChanged, firstValueFrom, Subscription, take } from 'rxjs';
+import { distinctUntilChanged, firstValueFrom, map, Observable, Subscription, take, withLatestFrom } from 'rxjs';
 import { RestaurantDataService } from '../../services';
 import { FilterState, RestaurantReviewData } from '../../models';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FilterDialogComponent } from '../dialogs/filter-dialog/filter-dialog.component';
+import { AsyncPipe } from '@angular/common';
+
+interface ToolbarInfo {
+  currentCount: number;
+  totalCount: number;
+}
 
 @Component({
   selector: 'app-toolbar',
-  imports: [],
+  imports: [AsyncPipe],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css',
   standalone: true,
@@ -19,17 +26,20 @@ export class ToolbarComponent implements OnDestroy {
   private readonly restaurantDataService = inject(RestaurantDataService);
   private readonly formBuilder = inject(FormBuilder);
 
-  private subscriptions: Subscription[] = [];
+  private readonly dialogConfig = {
+    width: '72rem',
+    maxWidth: '95vw',
+    panelClass: 'no-border-radius-dialog',
+  };
 
-  /**
-   * Whether the "Rating: 7+" filter is active or not
-   */
-  public isRatingBySevenFilterActive = signal(false);
+  private subscriptions: Subscription[] = [];
 
   /**
    * Form group for filter controls
    */
   public filterForm: UntypedFormGroup;
+
+  public toolbarInfo$: Observable<ToolbarInfo>;
 
   constructor() {
     this.filterForm = this.formBuilder.group({
@@ -37,11 +47,21 @@ export class ToolbarComponent implements OnDestroy {
       rating: [null]
     });
 
-    this.filterForm.valueChanges.pipe(
-      distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b))
-    ).subscribe(value => {
-      this.restaurantDataService.updateFilterState(value as FilterState);
-    });
+    this.subscriptions.push(
+      this.filterForm.valueChanges.pipe(
+        distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b))
+      ).subscribe(value => {
+        this.restaurantDataService.updateFilterState(value as FilterState);
+      })
+    );
+
+    this.toolbarInfo$ = this.restaurantDataService.filteredRestaurants$.pipe(
+      withLatestFrom(this.restaurantDataService.restaurants$),
+      map(([filteredRestaurants, allRestaurants]) => ({
+        currentCount: filteredRestaurants.length,
+        totalCount: allRestaurants.length
+      }))
+    );
   }
 
   /**
@@ -50,32 +70,30 @@ export class ToolbarComponent implements OnDestroy {
    * it adds the new restaurant.
    */
   public openAddRestaurantDialog() {
-    this.dialog.open(AddNewRestaurantDialogComponent, {
-      width: '72rem',
-      maxWidth: '95vw',
-      panelClass: 'no-border-radius-dialog',
+    this.dialog.open(AddNewRestaurantDialogComponent, this.dialogConfig)
+      .afterClosed().pipe(take(1)).subscribe(result => {
+        if (result) {
+          this.addNewRestaurant(result);
+        }
+      });
+  }
+
+  /**
+   * Opens the filter dialog.
+   * After the dialog is closed, if there is a result,
+   * it updates the filter form with the new filter state.
+   */
+  public async openFilterDialog() {
+    const currentFilterState = await firstValueFrom(this.restaurantDataService.filterState$);
+    this.dialog.open(FilterDialogComponent, {
+      ...this.dialogConfig,
+      height: '52rem',
+      data: currentFilterState
     }).afterClosed().pipe(take(1)).subscribe(result => {
       if (result) {
-        this.addNewRestaurant(result);
+        this.filterForm.patchValue(result);
       }
     });
-  }
-
-  /**
-   * Opens the filter dialog. (Currently a placeholder for future implementation)
-   */
-  public openFilterDialog() {
-    console.log('Filter dialog opened');
-  }
-
-  /**
-   * Toggles the "Rating: 7+" filter.
-   * If the filter is currently active, it deactivates it, and vice versa.
-   */
-  public toggleFilterBySevenRating() {
-    const current = this.filterForm.get('rating')?.value;
-    this.filterForm.patchValue({ rating: current === 7 ? null : 7 });
-    this.isRatingBySevenFilterActive.set(this.filterForm.get('rating')?.value === 7);
   }
 
   /**
@@ -84,6 +102,13 @@ export class ToolbarComponent implements OnDestroy {
    */
   private async addNewRestaurant(restaurantData: Omit<RestaurantReviewData, 'id'>) {
     await firstValueFrom(this.restaurantDataService.addNewRestaurant(restaurantData));
+  }
+
+  /**
+   * Resets all filters to their default (null) state.
+   */
+  public resetFilters() {
+    this.filterForm.reset({ restaurantType: null, rating: null });
   }
 
   public ngOnDestroy() {

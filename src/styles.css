@@ -67,6 +67,10 @@ li {
   font-family: var(--font-lato);
 }
 
+p {
+  font-size: 1.4rem;
+}
+
 .btn {
   font-family: var(--font-lato);
   font-size: 1.4rem;
@@ -92,6 +96,12 @@ li {
   border: 1px solid var(--gray-300);
   background-color: var(--gray-light);
   color: var(--gray-300);
+}
+.btn-gray:hover {
+  border: 1px solid var(--gray-300);
+  background-color: var(--gray-300);
+  color: var(--white);
+  transition: all 0.3s ease-in-out;
 }
 
 /* Material dialog overrides */
