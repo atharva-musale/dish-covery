@@ -8,8 +8,10 @@ import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
 })
 export class RestaurantDataService {
   private readonly apiUrl = 'http://localhost:3000/restaurants';
-  private restaurants$: Observable<RestaurantReviewData[]>;
   private filterStateSubject$ = new BehaviorSubject<FilterState>({ restaurantType: null, rating: null });
+
+  /** Observable stream of all restaurants */
+  public restaurants$: Observable<RestaurantReviewData[]>;
 
   /** Observable stream of filtered restaurant*/
   public filteredRestaurants$: Observable<RestaurantReviewData[]>;

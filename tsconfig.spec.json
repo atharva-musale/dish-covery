@@ -11,6 +11,7 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.fixtures.ts",
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/app/testing/**/*.ts"
   ]
 }

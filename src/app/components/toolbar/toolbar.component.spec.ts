@@ -36,13 +36,11 @@ describe('ToolbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render filter, rating, and add buttons', () => {
+  it('should render filter and add buttons', () => {
     const filterBtn = getElementBySelector('.filter-button', fixture);
-    const ratingBtn = getElementBySelector('.rating-button', fixture);
     const addBtn = getElementBySelector('.add-restaurant-button', fixture);
 
     expect(filterBtn).not.toBeNull();
-    expect(ratingBtn?.hasTextContent('Rating: 7+')).toBeTrue();
     expect(addBtn?.hasTextContent('Add new restaurant')).toBeTrue();
   });
 
@@ -73,21 +71,84 @@ describe('ToolbarComponent', () => {
     expect(mockRestaurantDataService.addNewRestaurant).not.toHaveBeenCalled();
   });
 
-  describe('toggleFilterBySevenRating', () => {
-    it('should activate the 7+ rating filter when toggled on', () => {
-      component.toggleFilterBySevenRating();
-      fixture.detectChanges();
-      const ratingBtn = getElementBySelector('.rating-button', fixture);
+  describe('openFilterDialog', () => {
+    it('should patch filter form when dialog returns a result', async () => {
+      const result = { restaurantType: ['Italian'], rating: '8' };
+      dialogSpy.open.and.returnValue({ afterClosed: () => of(result) } as any);
 
-      expect(ratingBtn?.hasClass('active')).toBeTrue();
-      expect(component.isRatingBySevenFilterActive()).toBeTrue();
+      await component.openFilterDialog();
+
+      expect(component.filterForm.value).toEqual(jasmine.objectContaining(result));
     });
 
-    it('should deactivate the 7+ rating filter when toggled off', () => {
-      component.toggleFilterBySevenRating(); // Toggle on
-      component.toggleFilterBySevenRating(); // Toggle off
+    it('should not patch filter form when dialog is cancelled', async () => {
+      dialogSpy.open.and.returnValue({ afterClosed: () => of(undefined) } as any);
+      const initialValue = { ...component.filterForm.value };
 
-      expect(component.isRatingBySevenFilterActive()).toBeFalse();
+      await component.openFilterDialog();
+
+      expect(component.filterForm.value).toEqual(initialValue);
+    });
+  });
+
+  describe('resetFilters', () => {
+    it('should reset filter form to default null values', () => {
+      component.filterForm.patchValue({ restaurantType: ['Italian'], rating: 7 });
+      component.resetFilters();
+
+      expect(component.filterForm.value).toEqual({ restaurantType: null, rating: null });
+    });
+
+    it('should trigger updateFilterState on the service', () => {
+      component.filterForm.patchValue({ restaurantType: ['Italian'], rating: 7 });
+      mockRestaurantDataService.updateFilterState.calls.reset();
+      component.resetFilters();
+
+      expect(mockRestaurantDataService.updateFilterState).toHaveBeenCalledWith({ restaurantType: null, rating: null });
+    });
+  });
+
+  describe('toolbarInfo$ and template rendering', () => {
+    it('should display result count when data is available', () => {
+      mockRestaurantDataService.restaurants$.next([{ id: '1' }, { id: '2' }, { id: '3' }] as any);
+      mockRestaurantDataService.filteredRestaurants$.next([{ id: '1' }] as any);
+      fixture.detectChanges();
+
+      const currentCount = getElementBySelector('.current-count', fixture);
+      const totalCount = getElementBySelector('.total-count', fixture);
+
+      expect(currentCount?.hasTextContent('1')).toBeTrue();
+      expect(totalCount?.hasTextContent('3')).toBeTrue();
+    });
+
+    it('should show reset filters link when filtered count differs from total', () => {
+      mockRestaurantDataService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
+      mockRestaurantDataService.filteredRestaurants$.next([{ id: '1' }] as any);
+      fixture.detectChanges();
+
+      const resetLink = getElementBySelector('.reset-filters-button', fixture);
+      expect(resetLink).not.toBeNull();
+    });
+
+    it('should hide reset filters link when all results are shown', () => {
+      mockRestaurantDataService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
+      mockRestaurantDataService.filteredRestaurants$.next([{ id: '1' }, { id: '2' }] as any);
+      fixture.detectChanges();
+
+      const resetLink = getElementBySelector('.reset-filters-button', fixture);
+      expect(resetLink).toBeNull();
+    });
+
+    it('should call resetFilters when reset link is clicked', () => {
+      mockRestaurantDataService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
+      mockRestaurantDataService.filteredRestaurants$.next([{ id: '1' }] as any);
+      fixture.detectChanges();
+
+      spyOn(component, 'resetFilters');
+      const resetLink = getElementBySelector('.reset-filters-button', fixture);
+      resetLink?.click();
+
+      expect(component.resetFilters).toHaveBeenCalled();
     });
   });
 });

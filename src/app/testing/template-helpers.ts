@@ -26,6 +26,13 @@ export class HTMLElementFixture {
   click(): void {
     this.element.click();
   }
+
+  setInputValue(value: string): void {
+    const input = this.element as HTMLInputElement;
+    input.value = value;
+    input.dispatchEvent(new Event('input'));
+    input.dispatchEvent(new Event('change'));
+  }
 }
 
 export function getElementBySelector<T>(
