@@ -3,12 +3,20 @@
     <i class="fa-solid fa-sliders"></i>
     <span>Filters</span>
   </button>
-  <button class="btn btn-gray-outline rating-button"
-    [class.active]="isRatingBySevenFilterActive()"
-    (click)="toggleFilterBySevenRating()"
-  >
-    <span>Rating: 7+</span>
-  </button>
+
+  @if (toolbarInfo$ | async; as info) {
+    <span class="result-count">
+      <span class="current-count">{{ info.currentCount }}</span>
+      <span class="separator">/</span>
+      <span class="total-count">{{ info.totalCount }}</span>
+      <span>results</span>
+    </span>
+
+    @if (info.currentCount !== info.totalCount) {
+      <a href="javascript:void(0)" class="reset-filters-button" (click)="resetFilters()">Reset Filters</a>
+    }
+  }
+
   <button class="btn btn-gray-outline add-restaurant-button" (click)="openAddRestaurantDialog()">
     <i class="fa-solid fa-plus"></i>
     <span>Add new restaurant</span>

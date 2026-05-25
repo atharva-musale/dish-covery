@@ -1,1 +1,29 @@
-<p>filter-dialog works!</p>
+<h2 class="dialog-title" mat-dialog-title>Apply Filters</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="filterForm" id="filter-form">
+    <!-- Rating -->
+    <div class="form-item">
+      <label for="rating">Rating</label>
+      <input id="rating" type="number" formControlName="rating" placeholder="Enter rating" />
+    </div>
+
+    <!-- Restaurant Type -->
+    <div class="form-item">
+      <label for="restaurantType">Type</label>
+      <app-multi-select-dropdown
+        id="restaurantType"
+        [options]="restaurantTypes"
+        placeholder="Select type(s)"
+        formControlName="restaurantType">
+      </app-multi-select-dropdown>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div class="buttons-place">
+    <button class="btn btn-gray-outline" type="button" (click)="onCancel()">Cancel</button>
+    <button class="btn btn-gray-outline" type="button" (click)="onSubmit()">Submit</button>
+  </div>
+</mat-dialog-actions>
