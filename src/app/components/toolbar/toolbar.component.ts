@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddNewRestaurantDialogComponent } from '../dialogs/add-new-restaurant.dialog/add-new-restaurant.dialog.component';
+import { AddNewRestaurantDialogComponent } from '../dialogs/add-new-restaurant/add-new-restaurant-dialog.component';
 import { distinctUntilChanged, firstValueFrom, Subscription, take } from 'rxjs';
 import { RestaurantDataService } from '../../services';
 import { FilterState, RestaurantReviewData } from '../../models';

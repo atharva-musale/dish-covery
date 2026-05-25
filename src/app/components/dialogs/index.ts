@@ -1,1 +1,1 @@
-export * from './add-new-restaurant.dialog/add-new-restaurant.dialog.component';
+export * from './add-new-restaurant/add-new-restaurant-dialog.component';
