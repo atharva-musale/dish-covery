@@ -1,16 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RestaurantType } from '../../models';
 
 @Component({
   selector: 'app-restaurant-type-badge',
   imports: [],
   templateUrl: './restaurant-type-badge.component.html',
-  styleUrl: './restaurant-type-badge.component.css'
+  styleUrl: './restaurant-type-badge.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RestaurantTypeBadgeComponent {
   /**
    * The restaurant types to display as badges.
    */
-  @Input()
-  public restaurantType: RestaurantType[] = [];
+  public readonly restaurantType = input<RestaurantType[]>([]);
 }

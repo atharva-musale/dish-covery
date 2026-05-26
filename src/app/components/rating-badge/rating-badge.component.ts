@@ -1,49 +1,33 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { NgClass } from '@angular/common';
+
+const RATING_CLASS_MAP: Record<number, string> = {
+  10: 'amazing',
+  9: 'amazing',
+  8: 'great',
+  7: 'good',
+  6: 'average',
+  5: 'average',
+  4: 'below-average',
+  3: 'below-average',
+  2: 'bad',
+  1: 'bad',
+};
 
 @Component({
   selector: 'app-rating-badge',
-  imports: [CommonModule],
+  imports: [NgClass],
   templateUrl: './rating-badge.component.html',
-  styleUrl: './rating-badge.component.css'
+  styleUrl: './rating-badge.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RatingBadgeComponent {
   /**
    * Rating of the restaurant
    */
-  @Input()
-  public rating = 0;
+  public readonly rating = input(0);
 
-  /**
-   * Assigns a class based on the rating
-   *
-   * @param rating rating of the restaurant
-   * @returns 
-   */
-  public getRatingClass(rating: number) {
-    switch(rating) {
-      case 10:
-        return 'amazing';
-      case 9:
-        return 'amazing';
-      case 8:
-        return 'great';
-      case 7:
-        return 'good';
-      case 6:
-        return 'average';
-      case 5:
-        return 'average';
-      case 4:
-        return 'below-average';
-      case 3:
-        return 'below-average';
-      case 2:
-        return 'bad';
-      case 1:
-        return 'bad';
-      default:
-        return 'unrated';
-    }
+  public getRatingClass(rating: number): string {
+    return RATING_CLASS_MAP[rating] ?? 'unrated';
   }
 }

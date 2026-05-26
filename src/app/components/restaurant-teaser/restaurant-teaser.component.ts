@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RestaurantReviewData } from '../../models';
 import { RatingBadgeComponent } from '../rating-badge/rating-badge.component';
 import { RestaurantTypeBadgeComponent } from '../restaurant-type-badge/restaurant-type-badge.component';
@@ -14,6 +14,5 @@ export class RestaurantTeaserComponent {
   /**
    * Data about the restaurant to display
    */
-  @Input()
-  public restaurant?: RestaurantReviewData;
+  public readonly restaurant = input<RestaurantReviewData>();
 }

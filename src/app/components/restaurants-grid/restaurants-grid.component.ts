@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RestaurantTeaserComponent } from '../restaurant-teaser/restaurant-teaser.component';
 import { RestaurantDataService } from '../../services';
 import { map, Observable } from 'rxjs';
@@ -10,15 +10,17 @@ import { AsyncPipe } from '@angular/common';
   imports: [RestaurantTeaserComponent, AsyncPipe],
   templateUrl: './restaurants-grid.component.html',
   styleUrl: './restaurants-grid.component.css',
-  encapsulation: ViewEncapsulation.None
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RestaurantsGridComponent {
+  private readonly restaurantDataService = inject(RestaurantDataService);
+
   /**
    * Restaurant details
    */
   public restaurants$: Observable<RestaurantReviewData[]>;
 
-  constructor(private restaurantDataService: RestaurantDataService) {
+  constructor() {
     this.restaurants$ = this.restaurantDataService.filteredRestaurants$.pipe(
       map(restaurants => (
         restaurants.map(restaurant => ({

@@ -6,6 +6,7 @@ import {
   Signal,
   computed,
   forwardRef,
+  inject,
   input,
   signal,
 } from '@angular/core';
@@ -27,6 +28,8 @@ import { ChipComponent } from '../chip/chip.component';
   ],
 })
 export class MultiSelectDropdownComponent implements ControlValueAccessor {
+  private readonly elementRef = inject(ElementRef);
+
   /** All available options */
   public readonly options = input.required<string[]>();
 
@@ -49,7 +52,7 @@ export class MultiSelectDropdownComponent implements ControlValueAccessor {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   private onTouched: () => void = () => {};
 
-  constructor(private readonly elementRef: ElementRef) {
+  constructor() {
     this.filteredOptions = computed(() => {
       const userText = this.filter().toLowerCase();
       return userText

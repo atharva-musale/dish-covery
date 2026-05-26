@@ -1,8 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MultiSelectDropdownComponent } from '../../utils';
 import { FilterState, RestaurantType } from '../../../models';
+
+interface FilterFormControls {
+  restaurantType: FormControl<RestaurantType[] | null>;
+  rating: FormControl<number | null>;
+}
 
 @Component({
   selector: 'app-filter-dialog',
@@ -28,12 +33,12 @@ export class FilterDialogComponent {
   /**
    * Form group for filter dialog
    */
-  public filterForm: UntypedFormGroup;
+  public filterForm: FormGroup<FilterFormControls>;
 
   constructor() {
-    this.filterForm = this.formBuilder.group({
-      restaurantType: null,
-      rating: null
+    this.filterForm = this.formBuilder.group<FilterFormControls>({
+      restaurantType: new FormControl(null),
+      rating: new FormControl(null)
     });
     this.filterForm.patchValue(this.initialFilterState);
   }
@@ -50,12 +55,11 @@ export class FilterDialogComponent {
    */
   public onSubmit() {
     if (this.filterForm.valid) {
-      const rating = this.filterForm.getRawValue().rating;
+      const rawValue = this.filterForm.getRawValue();
       this.dialogRef.close({
-        ...this.filterForm.getRawValue(),
-        rating: rating ? String(rating): null
+        restaurantType: rawValue.restaurantType,
+        rating: rawValue.rating ? Number(rawValue.rating) : null
       } as FilterState);
     }
   }
-
 }

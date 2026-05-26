@@ -34,10 +34,12 @@ describe('ChipComponent', () => {
   });
 
   it('should emit removeButtonClick event with item value when remove button is clicked', () => {
-    spyOn(component.removeButtonClick, 'emit');
+    let emittedValue: string | undefined;
+    component.removeButtonClick.subscribe((value: string) => emittedValue = value);
+
     const removeButton = getElementBySelector('.remove-chip-button', fixture);
     removeButton?.click();
 
-    expect(component.removeButtonClick.emit).toHaveBeenCalledWith('Test Item');
+    expect(emittedValue).toBe('Test Item');
   });
 });
