@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { FilterState, RestaurantReviewData } from '../../models';
-import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { API_CONFIG, FilterState, RestaurantReviewData } from '../../models';
+import { BehaviorSubject, catchError, combineLatest, map, Observable, of, retry, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantDataService {
-  private readonly apiUrl = 'http://localhost:3000/restaurants';
+  private readonly http = inject(HttpClient);
+  private readonly apiUrl = `${inject(API_CONFIG).baseUrl}/restaurants`;
   private filterStateSubject$ = new BehaviorSubject<FilterState>({ restaurantType: null, rating: null });
 
   /** Observable stream of all restaurants */
@@ -19,10 +20,15 @@ export class RestaurantDataService {
   /** Observable stream of the current filter state */
   public filterState$ = this.filterStateSubject$.asObservable();
 
-  constructor(private http: HttpClient) {
-    this.restaurants$ = this.getRestaurantsFromApi$();
+  constructor() {
+    this.restaurants$ = this.getRestaurantsFromApi$().pipe(
+      retry({ count: 2, delay: 1000 }),
+      catchError(() => of([])),
+      shareReplay(1)
+    );
+
     const sortedRestaurants$ = this.restaurants$.pipe(
-      map(restaurants => restaurants.sort((a, b) => b.rating - a.rating))
+      map(restaurants => [...restaurants].sort((a, b) => b.rating - a.rating))
     );
 
     this.filteredRestaurants$ = combineLatest([

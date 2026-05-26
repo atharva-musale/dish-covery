@@ -1,5 +1,5 @@
-<div class="chip" [ngClass]="classes">
-  <span class="chip-text">{{ item }}</span>
+<div class="chip" [ngClass]="classes()">
+  <span class="chip-text">{{ item() }}</span>
   <button class="remove-chip-button" (click)="removeChip()"> &times; </button>
 </div>
 

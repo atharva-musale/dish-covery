@@ -6,6 +6,7 @@ import { ToolbarComponent } from './toolbar.component';
 import { RestaurantDataService } from '../../services';
 import { getElementBySelector } from '../../testing';
 import { RestaurantDataServiceFixtures } from '../../../fixtures';
+import { RestaurantType } from '../../models/restaurant-type.enum';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -93,14 +94,14 @@ describe('ToolbarComponent', () => {
 
   describe('resetFilters', () => {
     it('should reset filter form to default null values', () => {
-      component.filterForm.patchValue({ restaurantType: ['Italian'], rating: 7 });
+      component.filterForm.patchValue({ restaurantType: [RestaurantType.Italian], rating: 7 });
       component.resetFilters();
 
       expect(component.filterForm.value).toEqual({ restaurantType: null, rating: null });
     });
 
     it('should trigger updateFilterState on the service', () => {
-      component.filterForm.patchValue({ restaurantType: ['Italian'], rating: 7 });
+      component.filterForm.patchValue({ restaurantType: [RestaurantType.Italian], rating: 7 });
       mockRestaurantDataService.updateFilterState.calls.reset();
       component.resetFilters();
 

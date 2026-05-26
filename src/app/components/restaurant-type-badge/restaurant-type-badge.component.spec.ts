@@ -28,7 +28,7 @@ describe('RestaurantTypeBadgeComponent', () => {
   });
 
   it('should render a badge for each restaurant type', () => {
-    component.restaurantType = [RestaurantType.Italian, RestaurantType.Cafe];
+    fixture.componentRef.setInput('restaurantType', [RestaurantType.Italian, RestaurantType.Cafe]);
     fixture.detectChanges();
 
     const spans = fixture.nativeElement.querySelectorAll('span');
@@ -38,7 +38,7 @@ describe('RestaurantTypeBadgeComponent', () => {
   });
 
   it('should render a single badge correctly', () => {
-    component.restaurantType = [RestaurantType.Japanese];
+    fixture.componentRef.setInput('restaurantType', [RestaurantType.Japanese]);
     fixture.detectChanges();
 
     const spans = fixture.nativeElement.querySelectorAll('span');

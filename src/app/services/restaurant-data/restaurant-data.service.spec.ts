@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { RestaurantDataService } from './restaurant-data.service';
-import { RestaurantReviewData } from '../../models';
+import { RestaurantReviewData, API_CONFIG } from '../../models';
 import { RestaurantType } from '../../models/restaurant-type.enum';
 import { firstValueFrom, of } from 'rxjs';
 
@@ -56,7 +56,8 @@ describe('RestaurantDataService', () => {
 
     TestBed.configureTestingModule({
       providers: [
-        { provide: HttpClient, useValue: {} }
+        { provide: HttpClient, useValue: {} },
+        { provide: API_CONFIG, useValue: { baseUrl: 'http://localhost:3000' } }
       ]
     });
 

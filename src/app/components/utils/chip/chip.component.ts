@@ -1,27 +1,24 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-chip',
   imports: [NgClass],
   templateUrl: './chip.component.html',
-  styleUrl: './chip.component.css'
+  styleUrl: './chip.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChipComponent {
-  @Input()
-  public item = '';
+  public readonly item = input('');
 
-  @Input()
-  public classes = '';
+  public readonly classes = input('');
 
-  @Output()
-  public removeButtonClick = new EventEmitter<string>();
+  public readonly removeButtonClick = output<string>();
 
   /**
    * Emit event when the remove button is clicked
    */
   public removeChip() {
-    this.removeButtonClick.emit(this.item);
+    this.removeButtonClick.emit(this.item());
   }
-
 }

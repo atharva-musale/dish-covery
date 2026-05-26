@@ -82,17 +82,17 @@ describe('FilterDialogComponent', () => {
       component.onSubmit();
 
       expect(mockDialogRef.close).toHaveBeenCalledWith({
-        rating: '8',
-        restaurantType: [RestaurantType.Chinese]
+        restaurantType: [RestaurantType.Chinese],
+        rating: 8
       });
     });
 
-    it('should convert rating to string in the result', () => {
+    it('should keep rating as number in the result', () => {
       component.filterForm.patchValue({ rating: 5 });
       component.onSubmit();
 
       const result = mockDialogRef.close.calls.mostRecent().args[0];
-      expect(result.rating).toBe('5');
+      expect(result.rating).toBe(5);
     });
 
     it('should pass null rating as null', () => {
