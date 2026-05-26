@@ -35,6 +35,12 @@ export class AppComponent implements AfterViewInit {
     );
   }
 
+  /**
+   * Checks if the page header is out of view by comparing its bottom
+   * position to the top of the viewport.
+   *
+   * @returns True if the header is out of view, false otherwise. 
+   */
   private isHeaderOutOfView(): boolean {
     return (this.pageHeader?.nativeElement.getBoundingClientRect().bottom ?? 1) <= 0;
   }
