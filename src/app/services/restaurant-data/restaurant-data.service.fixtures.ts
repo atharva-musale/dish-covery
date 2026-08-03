@@ -13,7 +13,7 @@ export class RestaurantDataServiceFixtures implements Readonly<RestaurantDataSer
     this.filterState$ = new BehaviorSubject<FilterState>({ restaurantType: null, rating: null });
   }
 
-  public updateFilterState = jasmine.createSpy('updateFilterState');
-  public addNewRestaurant = jasmine.createSpy('addNewRestaurant');
-  public getRestaurantsFromApi$ = jasmine.createSpy('getRestaurantsFromApi$');
+  public updateFilterState = vi.fn();
+  public addNewRestaurant = vi.fn();
+  public getRestaurantsFromApi$ = vi.fn();
 }

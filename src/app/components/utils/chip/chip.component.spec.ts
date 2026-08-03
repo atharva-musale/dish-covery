@@ -29,8 +29,8 @@ describe('ChipComponent', () => {
     const chip = getElementBySelector('.chip', fixture);
     const chipTextElement = getElementBySelector('.chip-text', fixture);
 
-    expect(chipTextElement?.hasTextContent('Test Item')).toBeTrue();
-    expect(chip?.hasClass('test-class')).toBeTrue();
+    expect(chipTextElement?.hasTextContent('Test Item')).toBe(true);
+    expect(chip?.hasClass('test-class')).toBe(true);
   });
 
   it('should emit removeButtonClick event with item value when remove button is clicked', () => {

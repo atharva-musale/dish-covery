@@ -64,7 +64,7 @@ describe('RestaurantsGridComponent', () => {
     fixture.detectChanges();
     const message = getElementBySelector('p', fixture);
 
-    expect(message?.hasTextContent('No restaurants found.')).toBeTrue();
+    expect(message?.hasTextContent('No restaurants found.')).toBe(true);
   });
 
   it('should use imageAssetsPath when imageUrl is not provided', async () => {

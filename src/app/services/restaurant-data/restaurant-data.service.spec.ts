@@ -52,7 +52,7 @@ describe('RestaurantDataService', () => {
   ];
 
   beforeEach(() => {
-    spyOn(RestaurantDataService.prototype, 'getRestaurantsFromApi$').and.returnValue(of(mockRestaurants));
+    vi.spyOn(RestaurantDataService.prototype, 'getRestaurantsFromApi$').mockReturnValue(of(mockRestaurants));
 
     TestBed.configureTestingModule({
       providers: [
@@ -122,7 +122,7 @@ describe('RestaurantDataService', () => {
 
       const createdRestaurant: RestaurantReviewData = { id: '2', ...newRestaurant };
 
-      spyOn(service, 'addNewRestaurant').and.returnValue(of(createdRestaurant));
+      vi.spyOn(service, 'addNewRestaurant').mockReturnValue(of(createdRestaurant));
 
       const result = await firstValueFrom(service.addNewRestaurant(newRestaurant));
       expect(result).toEqual(createdRestaurant);

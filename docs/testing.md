@@ -2,8 +2,8 @@
 
 ## Framework
 
-- **Test Runner:** Karma
-- **Testing Library:** Jasmine
+- **Test Runner:** Vitest
+- **Testing Library:** Vitest
 - **Browser:** Chrome (headless in CI)
 
 ## Running Tests

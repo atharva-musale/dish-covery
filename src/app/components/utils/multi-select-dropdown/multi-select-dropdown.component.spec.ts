@@ -24,7 +24,7 @@ describe('MultiSelectDropdownComponent', () => {
 
   it('should show placeholder when nothing is selected', () => {
     const trigger = getElementBySelector('.ms-trigger', fixture);
-    expect(trigger?.hasTextContent('Select…')).toBeTrue();
+    expect(trigger?.hasTextContent('Select…')).toBe(true);
   });
 
   it('should accept a custom placeholder', () => {
@@ -32,12 +32,12 @@ describe('MultiSelectDropdownComponent', () => {
     fixture.detectChanges();
 
     const trigger = getElementBySelector('.ms-trigger', fixture);
-    expect(trigger?.hasTextContent('Pick cuisines')).toBeTrue();
+    expect(trigger?.hasTextContent('Pick cuisines')).toBe(true);
   });
 
   describe('dropdown toggle', () => {
     it('should be closed by default', () => {
-      expect(component.isOpen()).toBeFalse();
+      expect(component.isOpen()).toBe(false);
       expect(getElementBySelector('.ms-dropdown', fixture)).toBeNull();
     });
 
@@ -45,7 +45,7 @@ describe('MultiSelectDropdownComponent', () => {
       getElementBySelector('.ms-trigger', fixture)?.click();
       fixture.detectChanges();
 
-      expect(component.isOpen()).toBeTrue();
+      expect(component.isOpen()).toBe(true);
       expect(getElementBySelector('.ms-dropdown', fixture)?.nativeElement).not.toBeNull();
     });
   });
@@ -133,29 +133,29 @@ describe('MultiSelectDropdownComponent', () => {
   describe('keyboard navigation', () => {
     it('should open dropdown on Enter key', () => {
       const event = new KeyboardEvent('keydown', { key: 'Enter' });
-      spyOn(event, 'preventDefault');
+      vi.spyOn(event, 'preventDefault');
       component.onTriggerKeydown(event);
-      expect(component.isOpen()).toBeTrue();
+      expect(component.isOpen()).toBe(true);
       expect(event.preventDefault).toHaveBeenCalled();
     });
 
     it('should open dropdown on Space key', () => {
       const event = new KeyboardEvent('keydown', { key: ' ' });
-      spyOn(event, 'preventDefault');
+      vi.spyOn(event, 'preventDefault');
       component.onTriggerKeydown(event);
-      expect(component.isOpen()).toBeTrue();
+      expect(component.isOpen()).toBe(true);
     });
 
     it('should not toggle on other keys', () => {
       const event = new KeyboardEvent('keydown', { key: 'Tab' });
       component.onTriggerKeydown(event);
-      expect(component.isOpen()).toBeFalse();
+      expect(component.isOpen()).toBe(false);
     });
 
     it('should select option on Enter key', () => {
       component.toggleDropdown();
       const event = new KeyboardEvent('keydown', { key: 'Enter' });
-      spyOn(event, 'preventDefault');
+      vi.spyOn(event, 'preventDefault');
       component.onOptionKeydown(event, 'Italian');
       expect(component.selected()).toContain('Italian');
     });
@@ -171,13 +171,13 @@ describe('MultiSelectDropdownComponent', () => {
   describe('document click', () => {
     it('should close dropdown when clicking outside', () => {
       component.toggleDropdown();
-      expect(component.isOpen()).toBeTrue();
+      expect(component.isOpen()).toBe(true);
 
       const outsideEvent = new MouseEvent('click');
       Object.defineProperty(outsideEvent, 'target', { value: document.body });
       component.onDocumentClick(outsideEvent);
 
-      expect(component.isOpen()).toBeFalse();
+      expect(component.isOpen()).toBe(false);
     });
 
     it('should keep dropdown open when clicking inside', () => {
@@ -188,7 +188,7 @@ describe('MultiSelectDropdownComponent', () => {
       Object.defineProperty(insideEvent, 'target', { value: fixture.nativeElement });
       component.onDocumentClick(insideEvent);
 
-      expect(component.isOpen()).toBeTrue();
+      expect(component.isOpen()).toBe(true);
     });
   });
 
@@ -199,7 +199,7 @@ describe('MultiSelectDropdownComponent', () => {
     });
 
     it('should register onChange callback', () => {
-      const spy = jasmine.createSpy('onChange');
+      const spy = vi.fn();
       component.registerOnChange(spy);
       component.toggleOption('Italian');
       expect(spy).toHaveBeenCalledWith(['Italian']);

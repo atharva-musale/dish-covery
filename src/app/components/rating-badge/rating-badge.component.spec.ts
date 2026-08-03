@@ -27,7 +27,7 @@ describe('RatingBadgeComponent', () => {
     fixture.detectChanges();
 
     const value = getElementBySelector('.value', fixture);
-    expect(value?.hasTextContent('8')).toBeTrue();
+    expect(value?.hasTextContent('8')).toBe(true);
   });
 
   it('should apply "amazing" class for rating 10', () => {
@@ -35,7 +35,7 @@ describe('RatingBadgeComponent', () => {
     fixture.detectChanges();
 
     const badge = getElementBySelector('.rating', fixture);
-    expect(badge?.hasClass('amazing')).toBeTrue();
+    expect(badge?.hasClass('amazing')).toBe(true);
   });
 
   it('should apply "great" class for rating 8', () => {
@@ -43,7 +43,7 @@ describe('RatingBadgeComponent', () => {
     fixture.detectChanges();
 
     const badge = getElementBySelector('.rating', fixture);
-    expect(badge?.hasClass('great')).toBeTrue();
+    expect(badge?.hasClass('great')).toBe(true);
   });
 
   it('should apply "average" class for rating 5', () => {
@@ -51,7 +51,7 @@ describe('RatingBadgeComponent', () => {
     fixture.detectChanges();
 
     const badge = getElementBySelector('.rating', fixture);
-    expect(badge?.hasClass('average')).toBeTrue();
+    expect(badge?.hasClass('average')).toBe(true);
   });
 
   it('should apply "unrated" class for rating 0', () => {
@@ -59,6 +59,6 @@ describe('RatingBadgeComponent', () => {
     fixture.detectChanges();
 
     const badge = getElementBySelector('.rating', fixture);
-    expect(badge?.hasClass('unrated')).toBeTrue();
+    expect(badge?.hasClass('unrated')).toBe(true);
   });
 });
