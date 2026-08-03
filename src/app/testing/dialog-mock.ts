@@ -1,7 +1,7 @@
 import { MatDialogRef } from '@angular/material/dialog';
 
 export class MockMatDialogRef {
-  public close = jasmine.createSpy('close');
+  public close = vi.fn();
 }
 
 export function provideMockDialogRef() {

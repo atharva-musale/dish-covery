@@ -23,13 +23,13 @@ describe('AppComponent', () => {
     fixture.detectChanges();
 
     const headerImage = getElementBySelector('.logo', fixture);
-    expect(headerImage?.hasTextContent('DishCovery')).toBeTrue();
+    expect(headerImage?.hasTextContent('DishCovery')).toBe(true);
   });
 
   describe('scrolled class', () => {
     it('should not have scrolled class initially', () => {
       const toolbar = getElementBySelector('app-toolbar', fixture);
-      expect(toolbar?.hasClass('scrolled')).toBeFalse();
+      expect(toolbar?.hasClass('scrolled')).toBe(false);
     });
   });
 });

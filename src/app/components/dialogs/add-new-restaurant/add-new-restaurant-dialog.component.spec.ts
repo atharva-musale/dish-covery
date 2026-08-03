@@ -1,3 +1,4 @@
+import type { Mock } from "vitest";
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -8,10 +9,10 @@ import { getElementBySelector } from '../../../testing';
 describe('AddNewRestaurantDialogComponent', () => {
   let component: AddNewRestaurantDialogComponent;
   let fixture: ComponentFixture<AddNewRestaurantDialogComponent>;
-  let dialogRef: jasmine.SpyObj<MatDialogRef<AddNewRestaurantDialogComponent>>;
+  let dialogRef: { close: Mock };
 
   beforeEach(async () => {
-    dialogRef = jasmine.createSpyObj('MatDialogRef', ['close']);
+    dialogRef = { close: vi.fn() };
 
     await TestBed.configureTestingModule({
       imports: [AddNewRestaurantDialogComponent],
@@ -31,7 +32,7 @@ describe('AddNewRestaurantDialogComponent', () => {
   });
 
   it('should have an invalid form when required fields are empty', () => {
-    expect(component.newRestaurantForm.valid).toBeFalse();
+    expect(component.newRestaurantForm.valid).toBe(false);
   });
 
   it('should close dialog without data on cancel', () => {
@@ -54,7 +55,7 @@ describe('AddNewRestaurantDialogComponent', () => {
 
     component.onSubmit();
 
-    expect(dialogRef.close).toHaveBeenCalledWith(jasmine.objectContaining({
+    expect(dialogRef.close).toHaveBeenCalledWith(expect.objectContaining({
       restaurantName: 'Test Restaurant',
       restaurantType: [RestaurantType.Italian],
       rating: 8
@@ -67,18 +68,18 @@ describe('AddNewRestaurantDialogComponent', () => {
     fixture.detectChanges();
 
     const error = getElementBySelector('.form-error', fixture);
-    expect(error?.hasTextContent('Restaurant name is required')).toBeTrue();
+    expect(error?.hasTextContent('Restaurant name is required')).toBe(true);
   });
 
   it('should report field as touched and invalid correctly', () => {
     const control = component.newRestaurantForm.get('restaurantName')!;
 
-    expect(component.isFieldTouchedAndInvalid('restaurantName')).toBeFalse();
+    expect(component.isFieldTouchedAndInvalid('restaurantName')).toBe(false);
 
     control.markAsTouched();
-    expect(component.isFieldTouchedAndInvalid('restaurantName')).toBeTrue();
+    expect(component.isFieldTouchedAndInvalid('restaurantName')).toBe(true);
 
     control.setValue('Some Name');
-    expect(component.isFieldTouchedAndInvalid('restaurantName')).toBeFalse();
+    expect(component.isFieldTouchedAndInvalid('restaurantName')).toBe(false);
   });
 });

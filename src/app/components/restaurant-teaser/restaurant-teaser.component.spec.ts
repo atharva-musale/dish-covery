@@ -40,8 +40,8 @@ describe('RestaurantTeaserComponent', () => {
     const img = getElementBySelector('.restaurant-image', fixture);
     const review = getElementBySelector('.remarks', fixture);
 
-    expect(title!.hasTextContent('Pasta Palace')).toBeTrue();
+    expect(title!.hasTextContent('Pasta Palace')).toBe(true);
     expect(img).not.toBeNull();
-    expect(review!.hasTextContent('Excellent food and ambiance')).toBeTrue();
+    expect(review!.hasTextContent('Excellent food and ambiance')).toBe(true);
   });
 });

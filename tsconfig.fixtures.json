@@ -3,9 +3,7 @@
   "compilerOptions": {
     "outDir": "./out-tsc/fixtures",
     "composite": true,
-    "types": [
-      "jasmine"
-    ]
+    "types": ["vitest/globals"]
   },
   "include": [
     "src/**/*.fixtures.ts",

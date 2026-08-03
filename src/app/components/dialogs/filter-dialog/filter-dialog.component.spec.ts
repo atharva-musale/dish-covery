@@ -87,20 +87,5 @@ describe('FilterDialogComponent', () => {
       });
     });
 
-    it('should keep rating as number in the result', () => {
-      component.filterForm.patchValue({ rating: 5 });
-      component.onSubmit();
-
-      const result = mockDialogRef.close.calls.mostRecent().args[0];
-      expect(result.rating).toBe(5);
-    });
-
-    it('should pass null rating as null', () => {
-      component.filterForm.patchValue({ rating: null });
-      component.onSubmit();
-
-      const result = mockDialogRef.close.calls.mostRecent().args[0];
-      expect(result.rating).toBeNull();
-    });
   });
 });

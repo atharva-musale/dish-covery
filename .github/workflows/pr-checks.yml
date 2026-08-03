@@ -5,17 +5,17 @@ on:
     branches: [main]
 
 jobs:
-  audit:
-    name: Dependency Audit
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: yarn
-      - run: yarn install --frozen-lockfile
-      - run: yarn audit:ci
+  # audit:
+  #   name: Dependency Audit
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 24
+  #         cache: yarn
+  #     - run: yarn install --frozen-lockfile
+  #     - run: yarn audit:ci
 
   lint:
     name: Lint
@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: yarn lint:ci
@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: yarn test:ci

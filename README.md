@@ -18,7 +18,7 @@ yarn start     # Start dev server (port 4200)
 | Angular Material | UI component library |
 | RxJS | Reactive state management |
 | JSON Server | Mock REST API |
-| Karma + Jasmine | Unit testing |
+| Vitest | Unit testing |
 | ESLint | Linting |
 | Husky + commitlint | Commit conventions |
 
