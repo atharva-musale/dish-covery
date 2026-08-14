@@ -1,6 +1,6 @@
 # DishCovery
 
-A restaurant review application built with Angular 21 and Angular Material.
+A restaurant review application built with Angular and Angular Material.
 
 ## Quick Start
 
@@ -14,7 +14,7 @@ yarn start     # Start dev server (port 4200)
 
 | Technology | Purpose |
 |------------|---------|
-| Angular 21 | Frontend framework (standalone components) |
+| Angular 22 | Frontend framework (standalone components) |
 | Angular Material | UI component library |
 | RxJS | Reactive state management |
 | JSON Server | Mock REST API |
