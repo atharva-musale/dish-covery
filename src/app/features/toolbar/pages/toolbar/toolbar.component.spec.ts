@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 
-import { RestaurantDataServiceFixtures } from '@dish/fixtures';
+import { RestaurantStateServiceMock } from '@dish/fixtures';
 import { RestaurantType } from '@dish/shared/models';
-import { RestaurantDataService } from '@dish/shared/services';
+import { RestaurantStateService } from '@dish/shared/services';
 import { of } from 'rxjs';
 import type { Mock } from 'vitest';
 import { getElementBySelector } from '../../../../testing';
@@ -14,20 +14,20 @@ describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
   let fixture: ComponentFixture<ToolbarComponent>;
   let dialogSpy: { open: Mock };
-  let mockRestaurantDataService: RestaurantDataServiceFixtures;
+  let mockRestaurantStateService: RestaurantStateServiceMock;
 
   beforeEach(async () => {
     dialogSpy = {
       open: vi.fn(),
     };
-    mockRestaurantDataService = new RestaurantDataServiceFixtures();
-    mockRestaurantDataService.updateFilterState.mockReturnValue(undefined);
+    mockRestaurantStateService = new RestaurantStateServiceMock();
+    mockRestaurantStateService.updateFilterState.mockReturnValue(undefined);
 
     await TestBed.configureTestingModule({
       imports: [ToolbarComponent],
       providers: [
         { provide: MatDialog, useValue: dialogSpy },
-        { provide: RestaurantDataService, useValue: mockRestaurantDataService }
+        { provide: RestaurantStateService, useValue: mockRestaurantStateService }
       ]
     })
     .compileComponents();
@@ -61,11 +61,11 @@ describe('ToolbarComponent', () => {
   it('should call addNewRestaurant service when dialog returns data', () => {
     const mockResult = { restaurantName: 'New Place', rating: 8 };
     dialogSpy.open.mockReturnValue({ afterClosed: () => of(mockResult) } as any);
-    mockRestaurantDataService.addNewRestaurant.mockReturnValue(of({ id: '1', ...mockResult } as any));
+    mockRestaurantStateService.addNewRestaurant.mockReturnValue(of({ id: '1', ...mockResult } as any));
 
     component.openAddRestaurantDialog();
 
-    expect(mockRestaurantDataService.addNewRestaurant).toHaveBeenCalledWith(mockResult as any);
+    expect(mockRestaurantStateService.addNewRestaurant).toHaveBeenCalledWith(mockResult as any);
   });
 
   it('should not call addNewRestaurant when dialog is cancelled', () => {
@@ -73,7 +73,7 @@ describe('ToolbarComponent', () => {
 
     component.openAddRestaurantDialog();
 
-    expect(mockRestaurantDataService.addNewRestaurant).not.toHaveBeenCalled();
+    expect(mockRestaurantStateService.addNewRestaurant).not.toHaveBeenCalled();
   });
 
   describe('openFilterDialog', () => {
@@ -106,17 +106,17 @@ describe('ToolbarComponent', () => {
 
     it('should trigger updateFilterState on the service', () => {
       component.filterForm.patchValue({ restaurantType: [RestaurantType.Italian], rating: 7 });
-      mockRestaurantDataService.updateFilterState.mockClear();
+      mockRestaurantStateService.updateFilterState.mockClear();
       component.resetFilters();
 
-      expect(mockRestaurantDataService.updateFilterState).toHaveBeenCalledWith({ restaurantType: null, rating: null });
+      expect(mockRestaurantStateService.updateFilterState).toHaveBeenCalledWith({ restaurantType: null, rating: null });
     });
   });
 
   describe('toolbarInfo$ and template rendering', () => {
     it('should display result count when data is available', () => {
-      mockRestaurantDataService.restaurants$.next([{ id: '1' }, { id: '2' }, { id: '3' }] as any);
-      mockRestaurantDataService.filteredRestaurants$.next([{ id: '1' }] as any);
+      mockRestaurantStateService.restaurants$.next([{ id: '1' }, { id: '2' }, { id: '3' }] as any);
+      mockRestaurantStateService.filteredRestaurants$.next([{ id: '1' }] as any);
       fixture.detectChanges();
 
       const currentCount = getElementBySelector('.current-count', fixture);
@@ -127,8 +127,8 @@ describe('ToolbarComponent', () => {
     });
 
     it('should show reset filters link when filtered count differs from total', () => {
-      mockRestaurantDataService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
-      mockRestaurantDataService.filteredRestaurants$.next([{ id: '1' }] as any);
+      mockRestaurantStateService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
+      mockRestaurantStateService.filteredRestaurants$.next([{ id: '1' }] as any);
       fixture.detectChanges();
 
       const resetLink = getElementBySelector('.reset-filters-button', fixture);
@@ -136,8 +136,8 @@ describe('ToolbarComponent', () => {
     });
 
     it('should hide reset filters link when all results are shown', () => {
-      mockRestaurantDataService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
-      mockRestaurantDataService.filteredRestaurants$.next([{ id: '1' }, { id: '2' }] as any);
+      mockRestaurantStateService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
+      mockRestaurantStateService.filteredRestaurants$.next([{ id: '1' }, { id: '2' }] as any);
       fixture.detectChanges();
 
       const resetLink = getElementBySelector('.reset-filters-button', fixture);
@@ -145,8 +145,8 @@ describe('ToolbarComponent', () => {
     });
 
     it('should call resetFilters when reset link is clicked', () => {
-      mockRestaurantDataService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
-      mockRestaurantDataService.filteredRestaurants$.next([{ id: '1' }] as any);
+      mockRestaurantStateService.restaurants$.next([{ id: '1' }, { id: '2' }] as any);
+      mockRestaurantStateService.filteredRestaurants$.next([{ id: '1' }] as any);
       fixture.detectChanges();
 
       vi.spyOn(component, 'resetFilters');
