@@ -12,11 +12,10 @@ import {
   FilterDialogComponent,
 } from '@dish/shared/dialogs';
 import {
-  FilterState,
   RestaurantReviewData,
   RestaurantType,
 } from '@dish/shared/models';
-import { RestaurantDataService } from '@dish/shared/services';
+import { RestaurantStateService } from '@dish/shared/services';
 import {
   distinctUntilChanged,
   firstValueFrom,
@@ -46,7 +45,7 @@ interface FilterFormControls {
 })
 export class ToolbarComponent implements OnDestroy {
   private readonly dialog = inject(MatDialog);
-  private readonly restaurantDataService = inject(RestaurantDataService);
+  private readonly restaurantStateService = inject(RestaurantStateService);
   private readonly formBuilder = inject(FormBuilder);
   
   private readonly subscriptions: Subscription[] = [];
@@ -74,12 +73,12 @@ export class ToolbarComponent implements OnDestroy {
       this.filterForm.valueChanges.pipe(
         distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
       ).subscribe(value => {
-        this.restaurantDataService.updateFilterState(value as FilterState);
+        this.restaurantStateService.updateFilterState(value);
       })
     );
 
-    this.toolbarInfo$ = this.restaurantDataService.filteredRestaurants$.pipe(
-      withLatestFrom(this.restaurantDataService.restaurants$),
+    this.toolbarInfo$ = this.restaurantStateService.filteredRestaurants$.pipe(
+      withLatestFrom(this.restaurantStateService.restaurants$),
       map(([filteredRestaurants, allRestaurants]) => ({
         currentCount: filteredRestaurants.length,
         totalCount: allRestaurants.length
@@ -107,7 +106,7 @@ export class ToolbarComponent implements OnDestroy {
    * it updates the filter form with the new filter state.
    */
   public async openFilterDialog() {
-    const currentFilterState = await firstValueFrom(this.restaurantDataService.filterState$);
+    const currentFilterState = await firstValueFrom(this.restaurantStateService.filterState$);
     this.dialog.open(FilterDialogComponent, {
       ...this.dialogConfig,
       height: '52rem',
@@ -124,7 +123,7 @@ export class ToolbarComponent implements OnDestroy {
    * @param restaurantData The data of the restaurant to be added, excluding the ID.
    */
   private async addNewRestaurant(restaurantData: Omit<RestaurantReviewData, 'id'>) {
-    await firstValueFrom(this.restaurantDataService.addNewRestaurant(restaurantData));
+    await firstValueFrom(this.restaurantStateService.addNewRestaurant(restaurantData));
   }
 
   /**

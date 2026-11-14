@@ -1,1 +1,1 @@
-export * from './restaurant-data/restaurant-data.service';
+export * from './restaurant-state/restaurant-state.service';

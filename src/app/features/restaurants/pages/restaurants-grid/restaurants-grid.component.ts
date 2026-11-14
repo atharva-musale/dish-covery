@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RestaurantReviewData } from '@dish/shared/models';
-import { RestaurantDataService } from '@dish/shared/services';
+import { RestaurantStateService } from '@dish/shared/services';
 import { map, Observable } from 'rxjs';
 import { RestaurantTeaserComponent } from '../../components/restaurant-teaser/restaurant-teaser.component';
 
@@ -13,7 +13,7 @@ import { RestaurantTeaserComponent } from '../../components/restaurant-teaser/re
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RestaurantsGridComponent {
-  private readonly restaurantDataService = inject(RestaurantDataService);
+  private readonly restaurantStateService = inject(RestaurantStateService);
 
   /**
    * Restaurant details
@@ -21,7 +21,7 @@ export class RestaurantsGridComponent {
   public restaurants$: Observable<RestaurantReviewData[]>;
 
   constructor() {
-    this.restaurants$ = this.restaurantDataService.filteredRestaurants$.pipe(
+    this.restaurants$ = this.restaurantStateService.filteredRestaurants$.pipe(
       map(restaurants => (
         restaurants.map(restaurant => ({
             ...restaurant,

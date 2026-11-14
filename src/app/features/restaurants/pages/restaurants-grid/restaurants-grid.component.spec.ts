@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RestaurantDataServiceFixtures } from '@dish/fixtures';
+import { RestaurantStateServiceMock } from '@dish/fixtures';
 import { RestaurantReviewData, RestaurantType } from '@dish/shared/models';
-import { RestaurantDataService } from '@dish/shared/services';
+import { RestaurantStateService } from '@dish/shared/services';
 import { firstValueFrom } from 'rxjs';
 import { getElementBySelector } from '../../../../testing';
 import { RestaurantsGridComponent } from './restaurants-grid.component';
@@ -28,16 +28,16 @@ const mockRestaurants: RestaurantReviewData[] = [
 describe('RestaurantsGridComponent', () => {
   let component: RestaurantsGridComponent;
   let fixture: ComponentFixture<RestaurantsGridComponent>;
-  let mockRestaurantDataService: RestaurantDataServiceFixtures;
+  let mockRestaurantStateService: RestaurantStateServiceMock;
 
   beforeEach(async () => {
-    mockRestaurantDataService = new RestaurantDataServiceFixtures();
-    mockRestaurantDataService.filteredRestaurants$.next(mockRestaurants);
+    mockRestaurantStateService = new RestaurantStateServiceMock();
+    mockRestaurantStateService.filteredRestaurants$.next(mockRestaurants);
 
     await TestBed.configureTestingModule({
       imports: [RestaurantsGridComponent],
       providers: [
-        { provide: RestaurantDataService, useValue: mockRestaurantDataService },
+        { provide: RestaurantStateService, useValue: mockRestaurantStateService },
       ],
     }).compileComponents();
 
@@ -58,7 +58,7 @@ describe('RestaurantsGridComponent', () => {
   });
 
   it('should show empty message when there are no restaurants', () => {
-    mockRestaurantDataService.filteredRestaurants$.next([]);
+    mockRestaurantStateService.filteredRestaurants$.next([]);
     fixture.detectChanges();
     const message = getElementBySelector('p', fixture);
 
@@ -66,7 +66,7 @@ describe('RestaurantsGridComponent', () => {
   });
 
   it('should use imageAssetsPath when imageUrl is not provided', async () => {
-    mockRestaurantDataService.filteredRestaurants$.next([{
+    mockRestaurantStateService.filteredRestaurants$.next([{
       id: '3',
       restaurantName: 'Path Place',
       rating: 7,
@@ -81,7 +81,7 @@ describe('RestaurantsGridComponent', () => {
   });
 
   it('should use fallback image when neither imageUrl nor imageAssetsPath is provided', async () => {
-    mockRestaurantDataService.filteredRestaurants$.next([{
+    mockRestaurantStateService.filteredRestaurants$.next([{
       id: '4',
       restaurantName: 'Fallback Place',
       rating: 6,

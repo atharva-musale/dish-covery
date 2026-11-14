@@ -32,7 +32,7 @@ src/
 │   │       └── pages/           # toolbar (filters, counts, dialog triggers)
 │   ├── shared/                  # Reusable, feature-agnostic building blocks
 │   │   ├── api-services/        # Thin HTTP clients (RestaurantApiService)
-│   │   ├── services/            # Stateful data services (RestaurantDataService)
+│   │   ├── services/            # Stateful data services (RestaurantStateService)
 │   │   ├── components/          # chip, multi-select-dropdown, rating-badge
 │   │   ├── dialogs/             # add-new-restaurant, filter-dialog
 │   │   └── models/              # Interfaces and enums
@@ -82,9 +82,9 @@ Each folder exposes an `index.ts` barrel. Imports that cross a module boundary u
 
 ```typescript
 // From a feature (crossing into shared/core)
-import { RestaurantDataService } from '@dish/shared/services';
+import { RestaurantStateService } from '@dish/shared/services';
 import { API_CONFIG } from '@dish/core/configurations';
-import { RestaurantDataServiceFixtures } from '@dish/fixtures';
+import { RestaurantStateServiceMock } from '@dish/fixtures';
 
 // Within shared (same module) – stay relative
 import { MultiSelectDropdownComponent } from '../../components';
@@ -96,14 +96,16 @@ The API base URL is provided by the `API_CONFIG` token in `core/configurations`,
 
 ### Service Layer
 
-- **`RestaurantApiService`** (`shared/api-services`) — stateless HTTP wrapper around the `/restaurants` endpoint (`getRestaurants$`, `addNewRestaurant`).
-- **`RestaurantDataService`** (`shared/services`) — stateful service exposing:
-  - `restaurants$` — all restaurants (with retry, error fallback to `[]`, and `shareReplay(1)`)
-  - `filteredRestaurants$` — restaurants sorted by rating and filtered by the current `FilterState`
-  - `filterState$` / `updateFilterState()` — filter state backed by a `BehaviorSubject`
-  - `addNewRestaurant()` — persists a new review
+Services are split by responsibility:
 
-> `RestaurantDataService` currently still performs its own HTTP calls; the intent is for it to delegate to `RestaurantApiService`.
+- **`RestaurantApiService`** (`shared/api-services`) — stateless HTTP wrapper around the `/restaurants` endpoint (`getRestaurants$`, `addNewRestaurant`). The only place that talks to `HttpClient`.
+- **`RestaurantStateService`** (`shared/services`) — client-side state; delegates all HTTP to `RestaurantApiService`. Exposes:
+  - `restaurants$` — all restaurants, fetched once (retry, error fallback to `[]`, `shareReplay(1)`) plus any added in this session
+  - `filteredRestaurants$` — restaurants sorted by rating and filtered by the current `FilterState` (shared between subscribers)
+  - `filterState$` / `updateFilterState()` — filter state backed by a `BehaviorSubject`; accepts partial updates
+  - `addNewRestaurant()` — persists a new review via the API and appends it to `restaurants$` on success
+
+Components inject `RestaurantStateService`, never the API service directly.
 
 All services are `providedIn: 'root'` and use `inject()` for dependencies.
 
@@ -112,14 +114,16 @@ All services are `providedIn: 'root'` and use `inject()` for dependencies.
 ```
 JSON Server (localhost:3000)
     ↕ HTTP (base URL from API_CONFIG)
-RestaurantApiService / RestaurantDataService  (RxJS streams + filter state)
+RestaurantApiService      (HTTP only)
+    ↕
+RestaurantStateService    (RxJS streams + filter state)
     ↕ inject()
 Pages: ToolbarComponent, RestaurantsGridComponent  (async pipe)
     ↕ signal input()
 Presentational components: RestaurantTeaser, RatingBadge, RestaurantTypeBadge
 ```
 
-- The **toolbar** pushes filter changes (from its reactive form or the filter dialog) into `RestaurantDataService.updateFilterState()`, shows filtered/total counts, and opens the add-restaurant dialog.
+- The **toolbar** pushes filter changes (from its reactive form or the filter dialog) into `RestaurantStateService.updateFilterState()`, shows filtered/total counts, and opens the add-restaurant dialog.
 - The **restaurants grid** subscribes to `filteredRestaurants$` and resolves each restaurant's image (`imageUrl` → `imageAssetsPath` → fallback image).
 - The **root component** renders the header and toggles a `scrolled` class on the toolbar once the header leaves the viewport.
 
@@ -131,5 +135,5 @@ Presentational components: RestaurantTeaser, RatingBadge, RestaurantTypeBadge
 
 ## Testing Support
 
-- Service mocks live next to their services as `*.fixtures.ts` (e.g. `RestaurantDataServiceMock`, `RestaurantApiServiceMock`) and are re-exported via `src/fixtures.ts`; they are compiled through `tsconfig.fixtures.json`.
+- Service mocks live next to their services as `*.fixtures.ts` (e.g. `RestaurantStateServiceMock`, `RestaurantApiServiceMock`) and are re-exported via `src/fixtures.ts`; they are compiled through `tsconfig.fixtures.json`.
 - Shared test helpers (dialog mock, template helpers) live in `app/testing/`.
