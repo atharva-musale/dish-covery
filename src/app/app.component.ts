@@ -6,9 +6,10 @@ import {
   ViewChild
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { fromEvent, of } from 'rxjs';
-import { distinctUntilChanged, map, throttleTime } from 'rxjs/operators';
-import { ToolbarComponent, RestaurantsGridComponent } from './components';
+import { distinctUntilChanged, fromEvent, map, of, throttleTime } from 'rxjs';
+import { ToolbarComponent } from './features/toolbar/pages';
+import { RestaurantsGridComponent } from './features/restaurants/pages';
+
 
 @Component({
   selector: 'app-root',
