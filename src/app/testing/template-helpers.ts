@@ -1,4 +1,4 @@
-import { ComponentFixture } from "@angular/core/testing";
+import { ComponentFixture } from '@angular/core/testing';
 
 export class HTMLElementFixture {
   constructor(private readonly element: HTMLElement) {}
