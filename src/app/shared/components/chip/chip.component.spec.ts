@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChipComponent } from './chip.component';
 import { getElementBySelector } from '../../../testing';
+import { ChipComponent } from './chip.component';
 
 describe('ChipComponent', () => {
   let component: ChipComponent;

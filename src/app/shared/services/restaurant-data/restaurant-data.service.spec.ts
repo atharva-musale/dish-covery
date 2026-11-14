@@ -1,10 +1,10 @@
-import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
-import { RestaurantDataService } from './restaurant-data.service';
+import { TestBed } from '@angular/core/testing';
+import { API_CONFIG } from '@dish/core/configurations';
+import { firstValueFrom, of } from 'rxjs';
 import { RestaurantReviewData } from '../../models';
 import { RestaurantType } from '../../models/restaurant-type.enum';
-import { firstValueFrom, of } from 'rxjs';
-import { API_CONFIG } from '../../../core/configurations';
+import { RestaurantDataService } from './restaurant-data.service';
 
 describe('RestaurantDataService', () => {
   let service: RestaurantDataService;

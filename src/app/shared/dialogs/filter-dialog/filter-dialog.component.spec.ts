@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { FilterDialogComponent } from './filter-dialog.component';
-import { FilterState, RestaurantType } from '../../models';
 import { MockMatDialogRef, provideMockDialogRef } from '../../../testing';
+import { FilterState, RestaurantType } from '../../models';
+import { FilterDialogComponent } from './filter-dialog.component';
 
 describe('FilterDialogComponent', () => {
   let component: FilterDialogComponent;

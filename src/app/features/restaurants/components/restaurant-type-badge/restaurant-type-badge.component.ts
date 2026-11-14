@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { RestaurantType } from '../../../../shared/models';
+import { RestaurantType } from '@dish/shared/models';
 
 @Component({
   selector: 'app-restaurant-type-badge',

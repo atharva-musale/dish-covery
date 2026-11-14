@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RestaurantTeaserComponent } from '../../components/restaurant-teaser/restaurant-teaser.component';
-import { RestaurantDataService } from '../../../../shared/services';
-import { map, Observable } from 'rxjs';
-import { RestaurantReviewData } from '../../../../shared/models';
 import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RestaurantReviewData } from '@dish/shared/models';
+import { RestaurantDataService } from '@dish/shared/services';
+import { map, Observable } from 'rxjs';
+import { RestaurantTeaserComponent } from '../../components/restaurant-teaser/restaurant-teaser.component';
 
 @Component({
   selector: 'app-restaurants-grid',

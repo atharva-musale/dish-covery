@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RestaurantDataServiceFixtures } from '@dish/fixtures';
+import { RestaurantReviewData, RestaurantType } from '@dish/shared/models';
+import { RestaurantDataService } from '@dish/shared/services';
 import { firstValueFrom } from 'rxjs';
-import { RestaurantReviewData, RestaurantType } from '../../../../shared/models';
-import { RestaurantDataService } from '../../../../shared/services/restaurant-data/restaurant-data.service';
-import { RestaurantDataServiceFixtures } from '../../../../shared/services/restaurant-data/restaurant-data.service.fixtures';
 import { getElementBySelector } from '../../../../testing';
 import { RestaurantsGridComponent } from './restaurants-grid.component';
 

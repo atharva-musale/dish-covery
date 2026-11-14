@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { getElementBySelector } from './testing';
 import { AppComponent } from './app.component';
+import { getElementBySelector } from './testing';
 
 describe('AppComponent', () => {
   let app: AppComponent;

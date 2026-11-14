@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { RestaurantType } from '@dish/shared/models';
 import { RestaurantTypeBadgeComponent } from './restaurant-type-badge.component';
-import { RestaurantType } from '../../../../shared/models';
 
 describe('RestaurantTypeBadgeComponent', () => {
   let component: RestaurantTypeBadgeComponent;

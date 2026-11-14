@@ -1,13 +1,13 @@
-import type { Mock } from 'vitest';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
-import { of } from 'rxjs';
 
-import { ToolbarComponent } from './toolbar.component';
-import { RestaurantDataServiceFixtures } from '../../../../../fixtures';
-import { RestaurantType } from '../../../../shared/models';
-import { RestaurantDataService } from '../../../../shared/services';
+import { RestaurantDataServiceFixtures } from '@dish/fixtures';
+import { RestaurantType } from '@dish/shared/models';
+import { RestaurantDataService } from '@dish/shared/services';
+import { of } from 'rxjs';
+import type { Mock } from 'vitest';
 import { getElementBySelector } from '../../../../testing';
+import { ToolbarComponent } from './toolbar.component';
 
 
 describe('ToolbarComponent', () => {
