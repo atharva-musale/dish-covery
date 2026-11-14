@@ -1,4 +1,4 @@
-import { RestaurantReviewData, RestaurantType } from '../../app/shared/models';
+import { RestaurantReviewData, RestaurantType } from '@dish/shared/models';
 
 export const reviewData: RestaurantReviewData[] = [
   {

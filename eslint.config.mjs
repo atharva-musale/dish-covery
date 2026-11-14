@@ -3,6 +3,7 @@ import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import angular from "angular-eslint";
 import stylistic from "@stylistic/eslint-plugin";
+import importPlugin from "eslint-plugin-import";
 
 export default tseslint.config(
   {
@@ -15,11 +16,33 @@ export default tseslint.config(
     ],
     plugins: {
       "@stylistic": stylistic,
+      import: importPlugin,
     },
     processor: angular.processInlineTemplates,
     rules: {
       "@stylistic/quotes": ["error", "single", { avoidEscape: true }],
       "@angular-eslint/prefer-inject": "off",
+      "import/order": [
+        "error",
+        {
+          groups: [
+            ["builtin", "external", "internal"],
+            "parent",
+            ["sibling", "index"],
+          ],
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+        },
+      ],
+      "sort-imports": [
+        "error",
+        {
+          ignoreCase: true,
+          ignoreDeclarationSort: true,
+        },
+      ],
       "@angular-eslint/directive-selector": [
         "error",
         {

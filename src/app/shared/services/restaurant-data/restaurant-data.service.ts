@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { FilterState, RestaurantReviewData } from '../../models';
+import { API_CONFIG } from '@dish/core/configurations';
 import { BehaviorSubject, catchError, combineLatest, map, Observable, of, retry, shareReplay } from 'rxjs';
-import { API_CONFIG } from '../../../core/configurations';
+import { FilterState, RestaurantReviewData } from '../../models';
 
 @Injectable({
   providedIn: 'root'

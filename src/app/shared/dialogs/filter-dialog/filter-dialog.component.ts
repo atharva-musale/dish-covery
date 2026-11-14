@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { FilterState, RestaurantType } from '../../models';
 import { MultiSelectDropdownComponent } from '../../components';
+import { FilterState, RestaurantType } from '../../models';
 
 interface FilterFormControls {
   restaurantType: FormControl<RestaurantType[] | null>;

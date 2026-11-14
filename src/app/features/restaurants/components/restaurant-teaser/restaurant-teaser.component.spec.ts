@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RestaurantTeaserComponent } from './restaurant-teaser.component';
+import { RestaurantReviewData, RestaurantType } from '@dish/shared/models';
 import { getElementBySelector } from '../../../../testing';
-import { RestaurantReviewData } from '../../../../shared/models';
-import { RestaurantType } from '../../../../shared/models/restaurant-type.enum';
+import { RestaurantTeaserComponent } from './restaurant-teaser.component';
 
 const mockRestaurant: RestaurantReviewData = {
   id: '1',

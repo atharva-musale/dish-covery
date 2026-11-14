@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 const RATING_CLASS_MAP: Record<number, string> = {
   10: 'amazing',

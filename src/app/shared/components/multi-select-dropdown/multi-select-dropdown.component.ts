@@ -1,14 +1,14 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  HostListener,
-  Signal,
   computed,
+  ElementRef,
   forwardRef,
+  HostListener,
   inject,
   input,
   signal,
+  Signal,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ChipComponent } from '../chip/chip.component';

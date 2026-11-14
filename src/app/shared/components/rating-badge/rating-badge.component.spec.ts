@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RatingBadgeComponent } from './rating-badge.component';
 import { getElementBySelector } from '../../../testing';
+import { RatingBadgeComponent } from './rating-badge.component';
 
 describe('RatingBadgeComponent', () => {
   let component: RatingBadgeComponent;

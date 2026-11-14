@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { RestaurantReviewData } from '../../../../shared/models';
+import { RatingBadgeComponent } from '@dish/shared/components';
+import { RestaurantReviewData } from '@dish/shared/models';
 import { RestaurantTypeBadgeComponent } from '../restaurant-type-badge/restaurant-type-badge.component';
-import { RatingBadgeComponent } from '../../../../shared/components';
 
 @Component({
   selector: 'app-restaurant-teaser',

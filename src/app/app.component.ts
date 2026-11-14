@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -5,11 +6,9 @@ import {
   ElementRef,
   ViewChild
 } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
 import { distinctUntilChanged, fromEvent, map, of, throttleTime } from 'rxjs';
-import { ToolbarComponent } from './features/toolbar/pages';
 import { RestaurantsGridComponent } from './features/restaurants/pages';
-
+import { ToolbarComponent } from './features/toolbar/pages';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +39,7 @@ export class AppComponent implements AfterViewInit {
    * Checks if the page header is out of view by comparing its bottom
    * position to the top of the viewport.
    *
-   * @returns True if the header is out of view, false otherwise. 
+   * @returns True if the header is out of view, false otherwise.
    */
   private isHeaderOutOfView(): boolean {
     return (this.pageHeader?.nativeElement.getBoundingClientRect().bottom ?? 1) <= 0;

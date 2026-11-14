@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { RestaurantType } from '../../models';
 import { MultiSelectDropdownComponent } from '../../components';
+import { RestaurantType } from '../../models';
 
 @Component({
   selector: 'app-add-new-restaurant-dialog',

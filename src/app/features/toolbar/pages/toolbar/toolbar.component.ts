@@ -1,31 +1,31 @@
 import { AsyncPipe } from '@angular/common';
 import {
-  Component,
   ChangeDetectionStrategy,
+  Component,
   inject,
   OnDestroy,
 } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import {
-  Observable,
-  distinctUntilChanged,
-  withLatestFrom,
-  map,
-  take,
-  firstValueFrom,
-  Subscription,
-} from 'rxjs';
+  AddNewRestaurantDialogComponent,
+  FilterDialogComponent,
+} from '@dish/shared/dialogs';
 import {
   FilterState,
   RestaurantReviewData,
   RestaurantType,
-} from '../../../../shared/models';
-import { RestaurantDataService } from '../../../../shared/services';
+} from '@dish/shared/models';
+import { RestaurantDataService } from '@dish/shared/services';
 import {
-  AddNewRestaurantDialogComponent,
-  FilterDialogComponent,
-} from '../../../../shared/dialogs';
+  distinctUntilChanged,
+  firstValueFrom,
+  map,
+  Observable,
+  Subscription,
+  take,
+  withLatestFrom,
+} from 'rxjs';
 
 interface ToolbarInfo {
   currentCount: number;
