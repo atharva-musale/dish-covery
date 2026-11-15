@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RestaurantStateServiceMock } from '@dish/fixtures';
 import { RestaurantReviewData, RestaurantType } from '@dish/shared/models';
 import { RestaurantStateService } from '@dish/shared/services';
+import { RestaurantStateServiceMock } from '@dish/shared/services/fixtures';
 import { firstValueFrom } from 'rxjs';
 import { getElementBySelector } from '../../../../testing';
 import { RestaurantsGridComponent } from './restaurants-grid.component';

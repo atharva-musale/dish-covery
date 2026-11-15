@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
-
-import { RestaurantStateServiceMock } from '@dish/fixtures';
 import { RestaurantType } from '@dish/shared/models';
 import { RestaurantStateService } from '@dish/shared/services';
+import { RestaurantStateServiceMock } from '@dish/shared/services/fixtures';
 import { of } from 'rxjs';
 import type { Mock } from 'vitest';
 import { getElementBySelector } from '../../../../testing';
@@ -17,9 +16,7 @@ describe('ToolbarComponent', () => {
   let mockRestaurantStateService: RestaurantStateServiceMock;
 
   beforeEach(async () => {
-    dialogSpy = {
-      open: vi.fn(),
-    };
+    dialogSpy = { open: vi.fn() };
     mockRestaurantStateService = new RestaurantStateServiceMock();
     mockRestaurantStateService.updateFilterState.mockReturnValue(undefined);
 
@@ -29,8 +26,7 @@ describe('ToolbarComponent', () => {
         { provide: MatDialog, useValue: dialogSpy },
         { provide: RestaurantStateService, useValue: mockRestaurantStateService }
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ToolbarComponent);
     component = fixture.componentInstance;
