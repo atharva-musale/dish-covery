@@ -12,7 +12,8 @@
     "test:ci": "ng test --watch=false --coverage",
     "lint": "ng lint",
     "lint:ci": "ng lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "clean": "rimraf node_modules dist coverage .angular"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +44,7 @@
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "json-server": "^1.0.0-beta.15",
+    "rimraf": "^6.1.4",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.34.1",
     "vitest": "^4.1.10"
