@@ -1,5 +1,3 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -21,7 +19,7 @@
     "paths": {
       "@dish/core/*": ["./src/app/core/*"],
       "@dish/shared/*": ["./src/app/shared/*"],
-      "@dish/fixtures": ["./src/fixtures.ts"]
+      "@dish/shared/*/fixtures": ["./src/app/shared/*/fixtures.ts"]
     }
   },
   "angularCompilerOptions": {
@@ -30,6 +28,7 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
+  "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.spec.json" },
